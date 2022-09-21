@@ -1,167 +1,166 @@
-$base-color:#181B22;
-$default-color:#222430;
-$default-broder-radius:30px;
+$base-color: #181b22;
+$default-color: #222430;
+$default-broder-radius: 30px;
 
 .homepage_container {
-  height: 100%;
-  min-width: 750px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-
-  .home_aside {
-    height: 95%;
-    width: 76px;
+    height: 100%;
+    min-width: 750px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 
-    .showDrawnBtn {
-      cursor: pointer;
-      display: block;
-      width: 12px;
-      height: 150px;
-      overflow: hidden;
-      outline: none;
-      border: 1px solid #27B2F3;
-      border-radius: 0 15px 15px 0;
-      box-shadow: 2px 0 10px 0 #27B2F3;
-      text-align: center;
-      padding: 0;
-      background-color: #27B2F3;
-      color: white;
-      transition: all 0.3s ease;
-    }
-
-    .showDrawnBtn:hover {
-      width: 25px;
-      transition: all 0.3s ease;
-    }
-  }
-
-  .home_main {
-    height: 95%;
-    width: 1120px;
-    background-color: $base-color;
-    border-radius: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    .health_part_one,
-    .health_part_two,
-    .health_part_three {
-      margin: 0 auto;
-      width: 97.5%;
-      border-radius: $default-broder-radius;
-      background-color: $default-color;
-    }
-
-    .health_part_one {
-      height: 36%;
-    }
-
-    .health_part_two {
-      height: 36%;
-    }
-
-    .health_part_three {
-      height: 20%;
-    }
-  }
-
-  .home_right {
-    height: 95%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .tabs_container {
-      width: 283px;
-      height: 200px;
-      // margin-top: $part_two_area_margin;
-      // animation: slide-in-blurred-left 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both 2s;
-
-      #nav-tab {
-        background-color: #181B22;
-        position: relative;
-        width: 100%;
-        height: 100%;
+    .home_aside {
+        height: 95%;
+        width: 76px;
         display: flex;
-        border-radius: 20px;
-        overflow: hidden;
-        border: 10px solid #181B22;
-      }
+        align-items: center;
+        justify-content: flex-start;
 
-      .nav-tab-item {
-        width: 110px;
-        height: 100%;
-        z-index: 2;
-        transition: 0.3s;
-        cursor: pointer;
+        .showDrawnBtn {
+            cursor: pointer;
+            display: block;
+            width: 12px;
+            height: 150px;
+            overflow: hidden;
+            outline: none;
+            border: 1px solid #27b2f3;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 2px 0 10px 0 #27b2f3;
+            text-align: center;
+            padding: 0;
+            background-color: #27b2f3;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .showDrawnBtn:hover {
+            width: 25px;
+            transition: all 0.3s ease;
+        }
+    }
+
+    .home_main {
+        height: 95%;
+        width: 1120px;
+        background-color: $base-color;
+        border-radius: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .health_part_one,
+        .health_part_two,
+        .health_part_three {
+            margin: 0 auto;
+            width: 97.5%;
+            border-radius: $default-broder-radius;
+            background-color: $default-color;
+        }
+
+        .health_part_one {
+            height: 36%;
+        }
+
+        .health_part_two {
+            height: 36%;
+        }
+
+        .health_part_three {
+            height: 20%;
+        }
+    }
+
+    .home_right {
+        height: 95%;
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        // justify-content: center;
-      }
 
-      .nav-tab-item.active {
-        width: 152px;
-      }
+        .tabs_container {
+            width: 283px;
+            height: 200px;
+            // margin-top: $part_two_area_margin;
+            // animation: slide-in-blurred-left 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both 2s;
 
-      .nav-tab-item_label {
-        font-size: 4em;
-        font-weight: 900;
-        color: #4298e7;
-        opacity: 0;
-        transition: 0.6s ease;
-        user-select: none;
-        margin: 0;
-        padding: 0;
-      }
+            #nav-tab {
+                background-color: #181b22;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                border-radius: 20px;
+                overflow: hidden;
+                border: 10px solid #181b22;
+            }
 
-      .active .nav-tab-item_label {
-        opacity: 1;
-      }
+            .nav-tab-item {
+                width: 110px;
+                height: 100%;
+                z-index: 2;
+                transition: 0.3s;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // justify-content: center;
+            }
 
-      .nav-tab-overlay {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 152px;
-        background-color: #222430;
-        border-radius: 10px;
-        transition: 0.6s ease;
-      }
+            .nav-tab-item.active {
+                width: 152px;
+            }
 
+            .nav-tab-item_label {
+                font-size: 4em;
+                font-weight: 900;
+                color: #4298e7;
+                opacity: 0;
+                transition: 0.6s ease;
+                user-select: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .active .nav-tab-item_label {
+                opacity: 1;
+            }
+
+            .nav-tab-overlay {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 152px;
+                background-color: #222430;
+                border-radius: 10px;
+                transition: 0.6s ease;
+            }
+        }
+
+        .audio_container {
+            width: 320px;
+            height: 120px;
+            border: 2px solid #2f313c;
+            border-radius: $default-broder-radius;
+            background-color: #222430;
+            text-align: center;
+            box-shadow: 7px 8px 17px -7px #000;
+        }
+
+        .clock_container {
+            width: 283px;
+            height: 32px;
+            border-radius: 20px;
+            background-color: #181b22;
+            // margin-top: $part_two_area_margin;
+        }
+
+        .weather_container {
+            width: 283px;
+            height: 100px;
+            border-radius: 20px;
+            background-color: #181b22;
+            // margin-top: $part_two_area_margin;
+        }
     }
-
-    .audio_container {
-      width: 320px;
-      height: 120px;
-      border: 2px solid #2F313C;
-      border-radius: $default-broder-radius;
-      background-color: #222430;
-      text-align: center;
-      box-shadow: 7px 8px 17px -7px #000;
-    }
-
-    .clock_container {
-      width: 283px;
-      height: 32px;
-      border-radius: 20px;
-      background-color: #181B22;
-      // margin-top: $part_two_area_margin;
-    }
-
-    .weather_container {
-      width: 283px;
-      height: 100px;
-      border-radius: 20px;
-      background-color: #181B22;
-      // margin-top: $part_two_area_margin;
-    }
-  }
 }

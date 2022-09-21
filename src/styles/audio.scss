@@ -3,181 +3,183 @@ $width: 270px;
 
 // Audio Style
 .container {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 
-  .play_title {
-    position: absolute;
-    top: 18px;
-    left: 86px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    .play_title {
+        position: absolute;
+        top: 18px;
+        left: 86px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-    .play_name {
-      color: #fff;
-      font-size: 12px;
+        .play_name {
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .play_player {
+            color: #666770;
+            font-size: 10px;
+        }
     }
 
-    .play_player {
-      color: #666770;
-      font-size: 10px;
-    }
-  }
-
-  .play_cover {
-    position: absolute;
-    top: 15px;
-    left: 30px;
-    border-radius: 50%;
-  }
-
-  .play_cover img {
-    animation: rotate 6s linear infinite;
-  }
-
-
-  // 封面旋转动画
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
+    .play_cover {
+        position: absolute;
+        top: 15px;
+        left: 30px;
+        border-radius: 50%;
     }
 
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .input_time {
-    position: absolute;
-    width: $width;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-
-
-    .time {
-      height: 30px;
-      margin: 0px auto;
-
-      .left,
-      .right {
-        color: #7A7B82;
-        font-size: 12px;
-      }
-
-      .left {
-        float: left;
-      }
-
-      .right {
-        float: right;
-      }
+    .play_cover img {
+        animation: rotate 6s linear infinite;
     }
 
-    input[type="range"] {
-      cursor: pointer;
-      -webkit-appearance: none;
-      width: $width;
-      border-radius: 10px;
-      /*这个属性设置使填充进度条时的图形为圆角*/
+    // 封面旋转动画
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
+    .input_time {
+        position: absolute;
+        width: $width;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .time {
+            height: 30px;
+            margin: 0px auto;
+
+            .left,
+            .right {
+                color: #7a7b82;
+                font-size: 12px;
+            }
+
+            .left {
+                float: left;
+            }
+
+            .right {
+                float: right;
+            }
+        }
+
+        input[type="range"] {
+            cursor: pointer;
+            -webkit-appearance: none;
+            width: $width;
+            border-radius: 10px;
+            /*这个属性设置使填充进度条时的图形为圆角*/
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 2px;
+            border-radius: 10px;
+            /*将轨道设为圆角的*/
+            // box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
+            /*轨道内置阴影效果*/
+            background-color: #6222e9;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 14px;
+            width: 14px;
+            margin-top: -6px;
+            /*使滑块超出轨道部分的偏移量相等*/
+            background: #6222e9;
+            border-radius: 50%;
+            /*外观设置为圆形*/
+            // border: 2px solid #5730c3;
+            /*设置边框*/
+            box-shadow: 0 0 5px 2px #6222e9;
+            /*添加底部阴影*/
+        }
     }
 
-    input[type="range"]::-webkit-slider-runnable-track {
-      height: 2px;
-      border-radius: 10px;
-      /*将轨道设为圆角的*/
-      // box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
-      /*轨道内置阴影效果*/
-      background-color: #6222e9;
+    .btns {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+
+        .btn_play {
+            cursor: pointer;
+            outline: none;
+            border: none;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+
+            // 渐变色
+            background-image: linear-gradient(
+                to bottom right,
+                #bb49fe,
+                #6222e9
+            );
+
+            .icon-gf-play {
+                margin-left: 5px;
+                font-size: 17px;
+                color: #fff;
+            }
+
+            .icon-gf-pause2 {
+                font-size: 17px;
+                color: #fff;
+            }
+        }
+
+        .btn_pre {
+            margin-right: 5px;
+        }
+
+        .btn_next {
+            margin-left: 5px;
+        }
+
+        .btn_pre,
+        .btn_next {
+            cursor: pointer;
+            outline: none;
+            border: none;
+            background-color: rgba($color: #fff, $alpha: 0);
+            color: #6d7196;
+            font-size: 20px;
+            vertical-align: middle;
+            padding-bottom: 6px;
+        }
+
+        .btn_pre[disabled],
+        .btn_next[disabled] {
+            color: #535353;
+            cursor: not-allowed;
+        }
     }
 
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 14px;
-      width: 14px;
-      margin-top: -6px;
-      /*使滑块超出轨道部分的偏移量相等*/
-      background: #6222e9;
-      border-radius: 50%;
-      /*外观设置为圆形*/
-      // border: 2px solid #5730c3;
-      /*设置边框*/
-      box-shadow: 0 0 5px 2px #6222e9;
-      /*添加底部阴影*/
-    }
-  }
-
-  .btns {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-
-    .btn_play {
-      cursor: pointer;
-      outline: none;
-      border: none;
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      border-radius: 50px;
-
-      // 渐变色
-      background-image: linear-gradient(to bottom right, #bb49fe, #6222e9);
-
-      .icon-gf-play {
-        margin-left: 5px;
-        font-size: 17px;
-        color: #fff;
-      }
-
-      .icon-gf-pause2 {
-        font-size: 17px;
-        color: #fff;
-      }
+    p {
+        font-size: 1.3em;
+        font-weight: bold;
+        text-align: center;
     }
 
-    .btn_pre {
-      margin-right: 5px;
+    img {
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
     }
-
-    .btn_next {
-      margin-left: 5px;
-    }
-
-    .btn_pre,
-    .btn_next {
-      cursor: pointer;
-      outline: none;
-      border: none;
-      background-color: rgba($color: #fff, $alpha: 0);
-      color: #6D7196;
-      font-size: 20px;
-      vertical-align: middle;
-      padding-bottom: 6px;
-    }
-
-    .btn_pre[disabled],
-    .btn_next[disabled] {
-      color: #535353;
-      cursor: not-allowed;
-    }
-  }
-
-  p {
-    font-size: 1.3em;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  img {
-    width: 340px;
-    height: 340px;
-    border-radius: 50%;
-  }
 }
