@@ -1,11 +1,12 @@
 <template>
   <div class="homepage_container">
+    <!-- 侧边栏 -->
     <div class="home_aside">
       <button @click="visible = true" class="showDrawnBtn">></button>
     </div>
 
     <!-- 抽屉 -->
-    <Drawer v-model:visible="visible"></Drawer>
+    <MainDrawer v-model:visible="visible"></MainDrawer>
 
     <!-- 主体区域 -->
     <div class="home_main">
@@ -16,22 +17,22 @@
     <div class="home_right">
       <!-- 播放器 -->
       <div class="audio_container">
-        <Audio />
+        <BaseAudio />
       </div>
 
       <!-- 切换 -->
       <div class="tabs_container">
-        <SwitchTabs @handleSwitchTab="handleSwitchTab"></SwitchTabs>
+        <BaseSwitchTabs @handleSwitchTab="handleSwitchTab"></BaseSwitchTabs>
       </div>
 
       <!-- 系统时间 -->
       <div class="clock_container">
-        <Clock />
+        <BaseClock />
       </div>
 
       <!-- 天气 -->
       <div class="weather_container">
-        <Weather />
+        <BaseWeather />
       </div>
 
       <!-- 指标 -->
@@ -41,14 +42,14 @@
 
 <script setup>
 import { ref, reactive, defineAsyncComponent, shallowRef } from "vue"
-import Drawer from '@/components/Drawer.vue'
-const Audio = defineAsyncComponent(() => import("components/Audio.vue"))
-const SwitchTabs = defineAsyncComponent(() => import('components/SwitchTabs.vue'))
-const Clock = defineAsyncComponent(() => import('components/Clock.vue'))
-const Weather = defineAsyncComponent(() => import('components/Weather.vue'))
+import MainDrawer from './components/HomePageDrawer.vue'
+const BaseAudio = defineAsyncComponent(() => import("components/BaseAudio.vue"))
+const BaseClock = defineAsyncComponent(() => import('components/BaseClock.vue'))
+const BaseSwitchTabs = defineAsyncComponent(() => import('components/BaseSwitchTabs.vue'))
+const BaseWeather = defineAsyncComponent(() => import('components/BaseWeather.vue'))
 
-let currentTab = shallowRef(null)
 const visible = ref(false)
+let currentTab = shallowRef(null)
 
 const handleSwitchTab = (tab) => {
   currentTab.value = tab

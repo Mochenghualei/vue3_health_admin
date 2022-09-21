@@ -6,11 +6,11 @@ export const routes = [
   {
     path: "/index",
     name: "Index",
-    component: () => import("@/pages/HomePage/Index.vue")
+    component: () => import("@/pages/HomePage/HomePage.vue")
   },
   {
     path: "/login",
     name: "Login",
-    component: () => import("../pages/Login/Index.vue")
+    component: () => import("../pages/Login/Login.vue")
   },
 ]
