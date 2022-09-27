@@ -12,7 +12,7 @@ router.beforeEach((to, from, next) => {
     let hasToken = getToken()
     if (hasToken) {
         if (to.path == "/login") {
-            next("/index")
+            next("/homepage")
         } else {
             next()
         }

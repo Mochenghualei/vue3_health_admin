@@ -76,6 +76,7 @@ $default-broder-radius: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-between;
 
         .tabs_container {
             width: 283px;

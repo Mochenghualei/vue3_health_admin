@@ -2,9 +2,13 @@ import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import path from "path"
 
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
+    server: {
+        open: true,
+        hmr: true,
+        usePolling: true,
+    },
     // alias
     resolve: {
         alias: {
@@ -14,9 +18,9 @@ export default defineConfig({
             api: path.resolve(__dirname, "src/api"),
             hooks: path.resolve(__dirname, "src/hooks"),
             pages: path.resolve(__dirname, "src/pages"),
+            utils: path.resolve(__dirname, "src/utils"),
             // "plugins": path.resolve(__dirname, "src/plugins"),
             // "layouts": path.resolve(__dirname, "src/layouts"),
-            // "utils": path.resolve(__dirname, "src/utils"),
             // "dirs": path.resolve(__dirname, "src/directives"),
         },
     },

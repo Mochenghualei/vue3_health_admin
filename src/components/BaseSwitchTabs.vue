@@ -31,10 +31,10 @@ import {
     nextTick,
 } from "vue"
 const HealthyAdmin = defineAsyncComponent(() =>
-    import("pages/Homepage/components/HomePageForHealth.vue")
+    import("pages/homepage/components/HomePageForHealth.vue")
 )
 const ReadAdmin = defineAsyncComponent(() =>
-    import("pages/Homepage/components/HomePageForRead.vue")
+    import("pages/homepage/components/HomePageForRead.vue")
 )
 
 const emit = defineEmits(["handleSwitchTab"])

@@ -4,13 +4,13 @@ export const routes = [
         redirect: "/login",
     },
     {
-        path: "/index",
-        name: "Index",
-        component: () => import("@/pages/HomePage/HomePage.vue"),
+        path: "/homepage",
+        name: "homepage",
+        component: () => import("@/pages/homepage/HomePage.vue"),
     },
     {
         path: "/login",
-        name: "Login",
-        component: () => import("../pages/Login/Login.vue"),
+        name: "login",
+        component: () => import("../pages/login/Login.vue"),
     },
 ]

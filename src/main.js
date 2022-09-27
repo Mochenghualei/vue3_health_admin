@@ -10,8 +10,13 @@ import * as Icons from "@ant-design/icons-vue"
 import "./mock/mockServe"
 // 阿里图标库
 import "./assets/icon/iconfont.css"
+// 引入echarts
+import * as echarts from "echarts"
 
 const app = createApp(App)
+
+// 全局注册echarts
+app.config.globalProperties.$echarts = echarts
 
 app.use(router).use(store).use(Antd).mount("#app")
 

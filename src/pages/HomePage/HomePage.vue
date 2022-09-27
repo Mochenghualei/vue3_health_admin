@@ -16,19 +16,12 @@
         <!-- 右侧区域 -->
         <div class="home_right">
             <!-- 播放器 -->
-            <div class="audio_container">
+            <div class="audio_container" v-once>
                 <BaseAudio />
             </div>
 
-            <!-- 切换 -->
-            <div class="tabs_container">
-                <BaseSwitchTabs
-                    @handleSwitchTab="handleSwitchTab"
-                ></BaseSwitchTabs>
-            </div>
-
             <!-- 系统时间 -->
-            <div class="clock_container">
+            <div class="clock_container" v-once>
                 <BaseClock />
             </div>
 
@@ -38,6 +31,12 @@
             </div>
 
             <!-- 指标 -->
+            <!-- 切换 -->
+            <div class="tabs_container" v-once>
+                <BaseSwitchTabs
+                    @handleSwitchTab="handleSwitchTab"
+                ></BaseSwitchTabs>
+            </div>
         </div>
     </div>
 </template>
