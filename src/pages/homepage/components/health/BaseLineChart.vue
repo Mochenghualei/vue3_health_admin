@@ -1,8 +1,7 @@
 <template>
     <div class="container">
         <div class="title">
-            <span class="left" /><span class="middle">666</span
-            ><span class="right" />
+            <span class="left" /><span class="middle">666</span><span class="right" />
         </div>
         <div ref="lineChart" class="canvas"></div>
     </div>
@@ -26,10 +25,18 @@ const { proxy } = getCurrentInstance()
 const lineChart = ref()
 const myChart = shallowRef(null)
 
-const series = reactive([
-    { name: "热量", data: [200, 300, 200, 300, 200, 300, 200, 300, 200, 300] },
-    { name: "体重", data: [64, 65, 64, 65, 64, 65, 64, 65, 64, 65] },
-])
+const { series, xAxisData } = defineProps({
+    series: {
+        type: Array,
+        required: true,
+        default: () => []
+    },
+    xAxisData: {
+        type: Array,
+        required: true,
+        default: () => []
+    }
+})
 
 onMounted(() => {
     myChart.value = proxy.$echarts.init(lineChart.value)
@@ -75,6 +82,10 @@ const options = computed(() => {
             ...lineChartOptions.legend,
             data: legendData.value,
         },
+        xAxis: {
+            ...lineChartOptions.xAxis,
+            data: xAxisData,
+        },
         series: seriesData.value,
     }
 })
@@ -82,6 +93,9 @@ const options = computed(() => {
 watch(series, () => {
     setOptions()
 })
+
+
+
 </script>
 
 <style scoped lang="scss">

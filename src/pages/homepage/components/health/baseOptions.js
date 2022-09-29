@@ -1,6 +1,6 @@
 export const lineChartOptions = {
-    animationDuration: 1500,
-    animationDelay: 500,
+    animationDuration: 1000,
+    animationDelay: 300,
     // 提示框
     tooltip: {
         trigger: "axis",
@@ -12,7 +12,7 @@ export const lineChartOptions = {
             fontStyle: "oblique",
             fontWeight: "bold",
         },
-        formatter: "{b}<br><br>{a0} : {c0}kcal<br>{a1} : {c1}kg",
+        formatter: "{b}<br><br>{a1} : {c1}kcal<br>{a0} : {c0}kg",
     },
     //图例
     legend: {
@@ -32,12 +32,12 @@ export const lineChartOptions = {
         data: [
             {
                 itemStyle: {
-                    color: "#CD4D44",
+                    color: "#91CC75",
                 },
             },
             {
                 itemStyle: {
-                    color: "#91CC75",
+                    color: "#CD4D44",
                 },
             },
         ],
@@ -115,46 +115,7 @@ export const lineChartOptions = {
         {
             z: 1,
             zlevel: 1,
-            // data: series[0].data,
-            // name: series[0].name,
-            type: "line",
-            yAxisIndex: 0,
-            emphasis: {
-                focus: "series",
-            },
-            stack: "Total",
-            smooth: true,
-            lineStyle: {
-                width: 0,
-            },
-            showSymbol: false,
-            areaStyle: {
-                opacity: 0.8,
-                color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 0,
-                    y2: 1,
-                    colorStops: [
-                        {
-                            offset: 0,
-                            color: "rgb(255, 191, 0)",
-                        },
-                        {
-                            offset: 1,
-                            color: "rgb(224, 62, 76)",
-                        },
-                    ],
-                    global: false,
-                },
-            },
-        },
-        {
-            z: 2,
-            zlevel: 2,
-            // data: series[1].data,
-            // name: series[1].name,
+            color: "#9FE080",
             type: "line",
             yAxisIndex: 1,
             emphasis: {
@@ -194,6 +155,42 @@ export const lineChartOptions = {
                 animationDuration: 1000,
             },
             showSymbol: false,
+        },
+        {
+            z: 2,
+            zlevel: 2,
+            type: "line",
+            yAxisIndex: 0,
+            emphasis: {
+                focus: "series",
+            },
+            stack: "Total",
+            smooth: true,
+            lineStyle: {
+                width: 0,
+            },
+            showSymbol: false,
+            areaStyle: {
+                opacity: 0.8,
+                color: {
+                    type: "linear",
+                    x: 0,
+                    y: 0,
+                    x2: 0,
+                    y2: 1,
+                    colorStops: [
+                        {
+                            offset: 0,
+                            color: "rgb(255, 191, 0)",
+                        },
+                        {
+                            offset: 1,
+                            color: "rgb(224, 62, 76)",
+                        },
+                    ],
+                    global: false,
+                },
+            },
         },
     ],
 }
