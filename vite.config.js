@@ -19,6 +19,7 @@ export default defineConfig({
             hooks: path.resolve(__dirname, "src/hooks"),
             pages: path.resolve(__dirname, "src/pages"),
             utils: path.resolve(__dirname, "src/utils"),
+            store: path.resolve(__dirname, "src/store"),
             // "plugins": path.resolve(__dirname, "src/plugins"),
             // "layouts": path.resolve(__dirname, "src/layouts"),
             // "dirs": path.resolve(__dirname, "src/directives"),

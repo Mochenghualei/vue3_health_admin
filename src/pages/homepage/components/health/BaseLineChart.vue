@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="title">
-            <span class="left" /><span class="middle">666</span><span class="right" />
+            <span class="left" /><span class="middle">{{title}}</span><span class="right" />
         </div>
         <div ref="lineChart" class="canvas"></div>
     </div>
@@ -26,6 +26,10 @@ const lineChart = ref()
 const myChart = shallowRef(null)
 
 const { series, xAxisData } = defineProps({
+    title: {
+        type: String,
+        required: true,
+    },
     series: {
         type: Array,
         required: true,
@@ -93,9 +97,6 @@ const options = computed(() => {
 watch(series, () => {
     setOptions()
 })
-
-
-
 </script>
 
 <style scoped lang="scss">

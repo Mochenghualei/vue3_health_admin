@@ -62,7 +62,46 @@ $default-broder-radius: 30px;
         }
 
         .health_part_two {
+            display: flex;
+            align-items: center;
             height: 36%;
+            background-color: #181b22;
+
+            .area_one,
+            .area_two,
+            .area_three {
+                height: 100%;
+                border-radius: $default-broder-radius;
+                background-color: $default-color;
+                transition: all 700ms ease;
+            }
+
+            .area_one {
+                flex: var(--flex1);
+                margin-right: 10px;
+            }
+
+            .area_two {
+                flex: var(--flex2);
+                margin: 0 10px;
+            }
+
+            .area_three {
+                flex: var(--flex3);
+                margin-left: 10px;
+            }
+
+            .area_one.active {
+                flex: var(--flex1);
+            }
+
+            .area_two.active {
+                flex: var(--flex2);
+            }
+
+            .area_three.active {
+                flex: var(--flex3);
+            }
         }
 
         .health_part_three {
@@ -162,6 +201,16 @@ $default-broder-radius: 30px;
             border-radius: 20px;
             background-color: #181b22;
             // margin-top: $part_two_area_margin;
+        }
+
+        .kpi_container {
+            width: 340px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // animation: slide-in-blurred-tr 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both 1.2s;
+            // animation: slide-in-blurred-left 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both 1.2s;
         }
     }
 }

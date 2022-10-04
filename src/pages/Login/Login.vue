@@ -4,18 +4,10 @@
             <div class="form">
                 <p>login</p>
                 <form>
-                    <input
-                        type="text"
-                        ref="nameInput"
-                        placeholder="用户名"
-                        v-model.lazy.trim="username"
-                    />
+                    <input type="text" ref="nameInput" placeholder="用户名" v-model.lazy.trim="username" />
                     <span class="passInput">
-                        <input
-                            :type="showPassWord ? 'text' : 'password'"
-                            placeholder="密码"
-                            v-model.lazy.trim="password"
-                        />
+                        <input :type="showPassWord ? 'text' : 'password'" placeholder="密码"
+                            v-model.lazy.trim="password" />
                         <span class="eye" @click="showPassWord = !showPassWord">
                             <eye-filled v-if="!showPassWord" />
                             <eye-invisible-filled v-else />
@@ -32,23 +24,23 @@
 
 <script setup>
 import { ref, reactive, onMounted } from "vue"
-import { useStore } from "vuex"
 import { useRouter } from "vue-router"
 import { message } from "ant-design-vue"
 import { login as authLogin } from "api/request"
+import { useUserStore } from "store/user"
 
 // get input focus
 onMounted(() => {
     nameInput.value.focus()
 })
 
+// use pinia
+const userStore = useUserStore()
 const nameInput = ref(null)
 const username = ref("")
 const password = ref("")
 const showPassWord = ref(false)
 const key = "success"
-
-const store = useStore()
 const router = useRouter()
 
 // login
@@ -70,19 +62,17 @@ function login() {
         (res) => {
             if (res.code == 200 && res.data.token) {
                 // 存储tokens
-                store
-                    .dispatch("user/setToken", {
-                        token: res.data.token,
-                        username: res.data.username,
+                userStore.setToken({
+                    token: res.data.token,
+                    username: res.data.username,
+                }).then(() => {
+                    message.success({
+                        content: res.message,
+                        key,
+                        duration: 3,
                     })
-                    .then(() => {
-                        message.success({
-                            content: res.message,
-                            key,
-                            duration: 3,
-                        })
-                        router.push("/index")
-                    })
+                    router.push("/homepage")
+                })
             } else {
                 message.error({ content: res.message, key, duration: 3 })
             }

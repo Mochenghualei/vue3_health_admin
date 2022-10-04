@@ -10,7 +10,9 @@
 
         <!-- 主体区域 -->
         <div class="home_main">
-            <component :is="currentTab"></component>
+            <keep-alive>
+                <component :is="currentTab"></component>
+            </keep-alive>
         </div>
 
         <!-- 右侧区域 -->
@@ -25,17 +27,20 @@
                 <BaseClock />
             </div>
 
+            <!-- 指标 -->
+            <div class="kpi_container">
+                <baseKpi :totalTime="data.totalTime" :totalDay="data.totalDay" :avgWeight="data.avgWeight"
+                    :avgBMI="data.avgBMI"></baseKpi>
+            </div>
+
             <!-- 天气 -->
             <div class="weather_container">
                 <BaseWeather />
             </div>
 
-            <!-- 指标 -->
             <!-- 切换 -->
             <div class="tabs_container" v-once>
-                <BaseSwitchTabs
-                    @handleSwitchTab="handleSwitchTab"
-                ></BaseSwitchTabs>
+                <BaseSwitchTabs @handleSwitchTab="handleSwitchTab"></BaseSwitchTabs>
             </div>
         </div>
     </div>
@@ -43,6 +48,7 @@
 
 <script setup>
 import { ref, reactive, defineAsyncComponent, shallowRef } from "vue"
+import { useHomePageStore } from "store/homePage"
 import MainDrawer from "./components/HomePageDrawer.vue"
 const BaseAudio = defineAsyncComponent(() => import("components/BaseAudio.vue"))
 const BaseClock = defineAsyncComponent(() => import("components/BaseClock.vue"))
@@ -52,9 +58,12 @@ const BaseSwitchTabs = defineAsyncComponent(() =>
 const BaseWeather = defineAsyncComponent(() =>
     import("components/BaseWeather.vue")
 )
+const baseKpi = defineAsyncComponent(() => import("components/BaseKpi.vue"))
 
 const visible = ref(false)
 let currentTab = shallowRef(null)
+const homePageStore = useHomePageStore()
+const data = homePageStore.data
 
 const handleSwitchTab = (tab) => {
     currentTab.value = tab
