@@ -10,6 +10,7 @@
 <script setup>
 import {
     ref,
+    toRefs,
     shallowRef,
     reactive,
     onMounted,
@@ -25,11 +26,8 @@ const { proxy } = getCurrentInstance()
 const lineChart = ref()
 const myChart = shallowRef(null)
 
-const { series, xAxisData } = defineProps({
-    title: {
-        type: String,
-        required: true,
-    },
+const props = defineProps({
+    title: String,
     series: {
         type: Array,
         required: true,
@@ -42,8 +40,11 @@ const { series, xAxisData } = defineProps({
     }
 })
 
+const { series, xAxisData } = toRefs(props)
+
 onMounted(() => {
     myChart.value = proxy.$echarts.init(lineChart.value)
+    // 重置图表尺寸
     resize(myChart.value)
     setOptions()
 })
@@ -56,7 +57,7 @@ function setOptions() {
 
 // 计算legendData供options使用
 const legendData = computed(() => {
-    return series.reduce(
+    return series.value.reduce(
         (pre, cur, index) => {
             pre[index].name = cur.name
             pre[index].itemStyle = lineChartOptions.legend.data[index].itemStyle
@@ -69,7 +70,7 @@ const legendData = computed(() => {
 // 计算series供options使用
 const seriesData = computed(() => {
     let arr = []
-    series.forEach((item, index) => {
+    series.value.forEach((item, index) => {
         arr.push({
             name: item.name,
             data: item.data,
@@ -88,7 +89,7 @@ const options = computed(() => {
         },
         xAxis: {
             ...lineChartOptions.xAxis,
-            data: xAxisData,
+            data: xAxisData.value,
         },
         series: seriesData.value,
     }
@@ -129,6 +130,7 @@ watch(series, () => {
         }
 
         .middle {
+            user-select: none;
             display: inline-block;
             height: 23px;
             width: 120px;

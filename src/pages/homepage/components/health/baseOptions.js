@@ -51,8 +51,8 @@ export const lineChartOptions = {
     // 网格
     grid: {
         top: "20%",
-        left: "3%",
-        right: "3%",
+        left: "2%",
+        right: "2%",
         bottom: "0%",
         containLabel: true,
     },
@@ -193,4 +193,129 @@ export const lineChartOptions = {
             },
         },
     ],
+}
+
+export const barChartOptions = {
+    tooltip: {
+        trigger: "axis",
+        backgroundColor: "rgba(50,50,50,0.8)",
+        borderColor: "rgba(50,50,50,0.8)",
+        padding: [2, 5, 2, 5],
+        textStyle: {
+            color: "#FFF",
+            fontStyle: "oblique",
+            fontWeight: "bold",
+        },
+        formatter: "{b}<br>{a} : {c}min",
+    },
+    // 滚动
+    dataZoom: {
+        type: "inside",
+        start: 0,
+        end: 100,
+    },
+    // 网格
+    grid: {
+        top: "13%",
+        left: "2%",
+        right: "2%",
+        bottom: "5%",
+        containLabel: true,
+    },
+    xAxis: {
+        type: "category",
+        axisLabel: {
+            color: function (value, index) {
+                var colorList = [
+                    "#00FCFF",
+                    "#0091FF",
+                    "#901698",
+                    "#40FBCB",
+                    "#FD982E",
+                    "#F73B75",
+                    "#862DFF",
+                    "#97FE33",
+                    "#00FCFF",
+                    "#0091FF",
+                    "#901698",
+                    "#40FBCB",
+                ]
+                return colorList[index]
+            },
+            fontWeight: "bold",
+        },
+        axisLine: {
+            show: false,
+        },
+        axisTick: {
+            show: false,
+        },
+        splitLine: {
+            show: false,
+        },
+    },
+    yAxis: {
+        type: "value",
+        name: "min",
+        nameTextStyle: {
+            color: "#5A5C65",
+            fontWeight: "bold",
+        },
+        offset: -10,
+        splitNumber: 3,
+        axisLine: {
+            show: false,
+        },
+        axisLabel: {
+            color: "#5A5C65",
+            fontWeight: "bold",
+        },
+        splitLine: {
+            show: false,
+            lineStyle: {
+                color: "rgba(255,255,255,0.5)",
+                type: [2, 5],
+                dashOffset: 5,
+            },
+        },
+    },
+    animationDurationUpdate: 500,
+    series: {
+        type: "bar",
+        name: "时间",
+        // id: 'sales',
+        // barWidth: 30,
+        barMaxWidth: "20%",
+        label: {
+            show: true,
+        },
+        itemStyle: {
+            borderRadius: [12, 12, 5, 5],
+            color: function (params) {
+                var colorList = [
+                    "#00FCFF",
+                    "#0091FF",
+                    "#901698",
+                    "#40FBCB",
+                    "#FD982E",
+                    "#F73B75",
+                    "#862DFF",
+                    "#97FE33",
+                    "#00FCFF",
+                    "#0091FF",
+                    "#901698",
+                    "#40FBCB",
+                ]
+                return colorList[params.dataIndex]
+            },
+        },
+        showBackground: true,
+        backgroundStyle: {
+            color: "rgba(180, 180, 180, 0.1)",
+        },
+        universalTransition: {
+            enabled: true,
+            divideShape: "clone",
+        },
+    },
 }

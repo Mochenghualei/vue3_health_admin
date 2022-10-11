@@ -1,23 +1,14 @@
 <template>
     <div class="container">
-        <audio
-            @timeupdate="timeupdate"
-            loop
-            ref="player"
-            :src="playList[playIndex].playUrl"
-        ></audio>
+        <audio @timeupdate="timeupdate" loop ref="player" :src="playList[playIndex].playUrl"></audio>
 
         <div class="play_cover">
             <!-- 封面 -->
-            <img
-                :style="{
-                    width: '45px',
-                    height: '45px',
-                    animationPlayState: playing ? 'running' : 'paused',
-                }"
-                :src="playList[playIndex].cover"
-                alt="none"
-            />
+            <img :style="{
+                width: '45px',
+                height: '45px',
+                animationPlayState: playing ? 'running' : 'paused',
+            }" :src="playList[playIndex].cover" alt="none" />
         </div>
         <!-- 曲名 -->
         <div class="play_title">
@@ -26,38 +17,24 @@
         </div>
         <!-- 进度条 -->
         <div class="input_time">
-            <input
-                @change="changeHandler"
-                ref="range"
-                type="range"
-                min="0"
-                value="0"
-                max="100"
-            />
+            <input @change="changeHandler" ref="range" type="range" min="0" value="0" max="100" />
             <div class="time">
                 <span class="left">{{ curTime }}</span>
                 <span class="right">{{
-                    totalTime == "Invalid date" ? "00:00" : totalTime
+                totalTime == "Invalid date" ? "00:00" : totalTime
                 }}</span>
             </div>
         </div>
 
         <!-- 按钮控件 -->
         <div class="btns">
-            <button
-                class="btn_pre iconfont icon-shangyishou"
-                @click="previousOne"
-                :disabled="playIndex == 0"
-            ></button>
+            <button class="btn_pre iconfont icon-shangyishou" @click="previousOne" :disabled="playIndex == 0"></button>
             <button class="btn_play" @click="play">
                 <i v-show="!playing" class="iconfont icon-gf-play"></i>
                 <i v-show="playing" class="iconfont icon-gf-pause2"></i>
             </button>
-            <button
-                class="btn_next iconfont icon-xiayishou"
-                @click="nextOne"
-                :disabled="playIndex == playList.length - 1"
-            ></button>
+            <button class="btn_next iconfont icon-xiayishou" @click="nextOne"
+                :disabled="playIndex == playList.length - 1"></button>
         </div>
     </div>
 </template>

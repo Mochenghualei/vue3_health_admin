@@ -41,7 +41,7 @@ $default-broder-radius: 30px;
 
     .home_main {
         height: 95%;
-        width: 1120px;
+        width: 78%;
         background-color: $base-color;
         border-radius: 35px;
         display: flex;
@@ -77,30 +77,31 @@ $default-broder-radius: 30px;
             }
 
             .area_one {
-                flex: var(--flex1);
+                width: var(--flex1);
                 margin-right: 10px;
             }
 
             .area_two {
-                flex: var(--flex2);
+                overflow: hidden;
+                width: var(--flex2);
                 margin: 0 10px;
             }
 
             .area_three {
-                flex: var(--flex3);
+                width: var(--flex3);
                 margin-left: 10px;
             }
 
             .area_one.active {
-                flex: var(--flex1);
+                width: var(--flex1);
             }
 
             .area_two.active {
-                flex: var(--flex2);
+                width: var(--flex2);
             }
 
             .area_three.active {
-                flex: var(--flex3);
+                width: var(--flex3);
             }
         }
 
