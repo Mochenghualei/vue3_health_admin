@@ -101,51 +101,5 @@ watch(series, () => {
 </script>
 
 <style scoped lang="scss">
-.container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .title {
-        width: 100%;
-        text-align: center;
-        height: 20px;
-
-        .left {
-            display: inline-block;
-            border: 20px solid transparent;
-            border-bottom: 20px solid #181b22;
-            transform: translate(20px, -20px) rotate(45deg);
-            border-radius: 30%;
-        }
-
-        .right {
-            display: inline-block;
-            border: 20px solid transparent;
-            border-bottom: 20px solid #181b22;
-            transform: translate(-20px, -20px) rotate(-45deg);
-            border-radius: 30%;
-        }
-
-        .middle {
-            user-select: none;
-            display: inline-block;
-            height: 23px;
-            width: 120px;
-            white-space: nowrap;
-            line-height: 23px;
-            font-size: 13px;
-            color: #fff;
-            background-color: #181b22;
-            transform: translateY(-23px);
-        }
-    }
-
-    .canvas {
-        flex: 1;
-        width: 100%;
-    }
-}
+@import "styles/basechart.scss"
 </style>
