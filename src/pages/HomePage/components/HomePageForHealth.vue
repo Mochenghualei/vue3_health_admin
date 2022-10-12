@@ -8,7 +8,12 @@
     <div class="health_part_two">
         <!-- 左侧图表 -->
         <div class="area_one" :style="{'--flex1':flex1}" ref="areaOne" @click="toggleActive(1)">
-
+            <!-- 切换图标 -->
+            <span class="iconfont icon-zuo-copy" :style="{fontSize:'20px'}" v-if="flex1=='5%'"></span>
+            <!-- 图表 -->
+            <BasePieChart title="状态分布" :series="data.seriesThree" :barWidth="flex1"
+                v-if="data.seriesThree.length && flex1=='35%'">
+            </BasePieChart>
         </div>
         <!-- 中间图表 -->
         <div class="area_two active" :style="{'--flex2':flex2}" ref="areaTwo" @click="toggleActive(2)">
@@ -25,6 +30,7 @@
 import { ref, onMounted } from "vue"
 import BaseLineChart from "./health/BaseLineChart.vue"
 import BaseBarChart from './health/BaseBarChart.vue'
+import BasePieChart from './health/BasePieChart.vue'
 import { useHomePageStore } from "store/homePage"
 import { message } from "ant-design-vue"
 

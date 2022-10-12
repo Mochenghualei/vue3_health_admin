@@ -319,3 +319,41 @@ export const barChartOptions = {
         },
     },
 }
+
+export const pieChartOptions = {
+    tooltip: {
+        trigger: "item",
+        backgroundColor: "rgba(50,50,50,0.8)",
+        borderColor: "rgba(50,50,50,0.8)",
+        padding: [2, 5, 2, 5],
+        textStyle: {
+            color: "#FFF",
+            fontStyle: "oblique",
+            fontWeight: "bold",
+        },
+        formatter: "{b}<br>{a} : {c}",
+    },
+    series: {
+        name: "次数",
+        type: "pie",
+        radius: [40, 90],
+        center: ["50%", "50%"],
+        roseType: "area",
+        itemStyle: {
+            borderRadius: 8,
+        },
+        labelLine: {
+            lineStyle: {
+                color: "rgba(255, 255, 255, 0.3)",
+            },
+            smooth: 0.2,
+            length: 10,
+            length2: 20,
+        },
+    },
+    animationType: "scale",
+    animationEasing: "elasticOut",
+    animationDelay: function (idx) {
+        return Math.random() * 200
+    },
+}

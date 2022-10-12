@@ -2,10 +2,13 @@
   <div class="container">
     <div class="title">
       <span class="left" />
+      <!-- 左展开图标 -->
       <span class="middle" v-show="curIdx==1">
         <arrow-left-outlined />
       </span>
+      <!-- 标题 -->
       <span class="middle">{{ title }}</span>
+      <!-- 右展开图标 -->
       <span class="middle" v-show="curIdx==3">
         <arrow-right-outlined />
       </span>

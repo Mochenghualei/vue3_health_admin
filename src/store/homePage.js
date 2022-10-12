@@ -17,6 +17,7 @@ export const useHomePageStore = defineStore("homePage", {
                 xAxisDataOne: [],
                 seriesTwo: [],
                 drilldownData: [],
+                seriesThree: [],
                 totalTime: 0,
                 totalDay: 0,
                 avgWeight: 0,
@@ -29,6 +30,19 @@ export const useHomePageStore = defineStore("homePage", {
         async getGlobalData() {
             const res = await getUserList()
             if (res && res.length) {
+                // 指标
+                let totalTime = 0,
+                    totalWeight = 0
+                res.forEach((item) => {
+                    totalTime += item.sporttime
+                    totalWeight += item.weight
+                })
+                this.data.totalTime = totalTime
+                this.data.totalDay = res.length
+                this.data.avgWeight = (totalWeight / res.length).toFixed(1) * 1
+                this.data.avgBMI = (
+                    this.data.avgWeight / Math.pow(1.69, 2)
+                ).toFixed(1)
                 // 图表1数据处理
                 const { seriesData, xAxisData } = getChartOneData(
                     res,
@@ -43,19 +57,8 @@ export const useHomePageStore = defineStore("homePage", {
                 )
                 this.data.drilldownData = drilldownData
                 this.data.seriesTwo = seriesDataTwo
-                // 指标
-                let totalTime = 0,
-                    totalWeight = 0
-                res.forEach((item) => {
-                    totalTime += item.sporttime
-                    totalWeight += item.weight
-                })
-                this.data.totalTime = totalTime
-                this.data.totalDay = res.length
-                this.data.avgWeight = (totalWeight / res.length).toFixed(1) * 1
-                this.data.avgBMI = (
-                    this.data.avgWeight / Math.pow(1.69, 2)
-                ).toFixed(1)
+                // 图表3数据处理
+                this.data.seriesThree = getChartThreeData(res)
 
                 return Promise.resolve("获取数据成功")
             } else {
