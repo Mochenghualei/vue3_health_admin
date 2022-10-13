@@ -6,6 +6,7 @@ import { createPinia } from "pinia"
 // 引入antd
 import Antd from "ant-design-vue"
 import "ant-design-vue/dist/antd.css"
+import { message } from "ant-design-vue"
 import * as Icons from "@ant-design/icons-vue"
 // 开启mock服务
 import "./mock/mockServe"
@@ -15,6 +16,8 @@ import "./assets/icon/iconfont.css"
 import * as echarts from "echarts"
 
 const app = createApp(App)
+
+app.provide("message", message)
 
 // 全局注册echarts
 app.config.globalProperties.$echarts = echarts

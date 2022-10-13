@@ -21,6 +21,20 @@
 
         <!-- 右侧区域 -->
         <div class="home_right" v-if="!startStyleShow">
+            <!-- 欢迎语和退出按钮 -->
+            <div v-once class="logout_welcome">
+                <div class="welcome">
+                    Welcome
+                    {{
+                    username
+                    ? username.charAt(0).toUpperCase() + username.slice(1)
+                    : ""
+                    }}
+                </div>
+                <div class="logout_btn">
+                    <button class="btn" @click="logout">退出登录</button>
+                </div>
+            </div>
             <!-- 播放器 -->
             <div class="audio_container" v-once>
                 <BaseAudio />
@@ -51,8 +65,11 @@
 </template>
 
 <script setup>
-import { ref, reactive, defineAsyncComponent, shallowRef } from "vue"
+import { ref, defineAsyncComponent, shallowRef, inject } from "vue"
+import { useRouter } from "vue-router";
+
 import { useHomePageStore } from "store/homePage"
+import { useUserStore } from "store/user"
 import MainDrawer from "./components/HomePageDrawer.vue"
 import { getUserInfo } from "utils/userInfo"
 const BaseAudio = defineAsyncComponent(() => import("components/BaseAudio.vue"))
@@ -69,12 +86,26 @@ const visible = ref(false)
 // 蒙版按钮
 const startStyleShow = ref(true)
 let currentTab = shallowRef(null)
+// 获取store
 const homePageStore = useHomePageStore()
+const userStore = useUserStore()
 const data = homePageStore.data
 const username = getUserInfo()
+const $router = useRouter()
+const message = inject("message")
 
-const handleSwitchTab = (tab) => {
+function handleSwitchTab(tab) {
     currentTab.value = tab
+}
+
+function logout() {
+    userStore.logout().then(
+        res => {
+            if (res == 'removeTokenDone') {
+                $router.push("/login")
+                message.success({ content: "请重新登录", duration: 3 })
+            }
+        })
 }
 </script>
 <style scoped lang="scss">

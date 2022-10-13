@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Bad+Script");
+
 $base-color: #181b22;
 $default-color: #222430;
 $default-broder-radius: 30px;
@@ -120,6 +122,49 @@ $default-broder-radius: 30px;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+
+        .logout_welcome {
+            width: 320px;
+            padding: 10px 0 0 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: -10px;
+
+            .welcome {
+                white-space: normal;
+                font-family: "Bad Script", cursive;
+                font-size: 2em;
+                user-select: none;
+                text-align: center;
+                transition: all 2s ease;
+                animation: animate 3s linear infinite;
+            }
+
+            .logout_btn {
+                margin-left: 15px;
+                top: -4px;
+
+                .btn {
+                    background-color: #27B2F3;
+                    color: #fff;
+                    border: 0;
+                    border-radius: 5px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+                    padding: 4px 6px;
+                    font-size: 12px;
+                    cursor: pointer;
+                }
+
+                .btn:active {
+                    transform: scale(0.98);
+                }
+
+                .btn:focus {
+                    outline: 0;
+                }
+            }
+        }
 
         .tabs_container {
             width: 283px;
@@ -251,5 +296,27 @@ $default-broder-radius: 30px;
 
     100% {
         color: #ea2222;
+    }
+}
+
+@keyframes animate {
+
+    /*动画*/
+    0%,
+    100% {
+        color: #fff;
+        filter: blur(2px);
+        /*过渡:模糊*/
+        text-shadow:
+            /*字体阴影*/
+            0 0 10px #00bcff, 0 0 20px #00b3ff,
+            0 0 30px #00b3ff, 0 0 60px #00b3ff, 0 0 90px #00b3ff;
+    }
+
+    35%,
+    65% {
+        color: #fff;
+        filter: blur(0px);
+        text-shadow: none;
     }
 }

@@ -27,13 +27,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue"
+import { ref, onMounted, inject } from "vue"
 import BaseLineChart from "./health/BaseLineChart.vue"
 import BaseBarChart from './health/BaseBarChart.vue'
 import BasePieChart from './health/BasePieChart.vue'
 import { useHomePageStore } from "store/homePage"
-import { message } from "ant-design-vue"
 
+const message = inject("message")
 const homePageStore = useHomePageStore()
 const data = homePageStore.data
 const key = "success"

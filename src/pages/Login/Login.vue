@@ -23,11 +23,12 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from "vue"
+import { ref, inject, reactive, onMounted } from "vue"
 import { useRouter } from "vue-router"
-import { message } from "ant-design-vue"
 import { login as authLogin } from "api/request"
 import { useUserStore } from "store/user"
+
+const message = inject("message")
 
 // get input focus
 onMounted(() => {
@@ -41,7 +42,7 @@ const username = ref("")
 const password = ref("")
 const showPassWord = ref(false)
 const key = "success"
-const router = useRouter()
+const $router = useRouter()
 
 // login
 function login() {
@@ -71,7 +72,7 @@ function login() {
                         key,
                         duration: 3,
                     })
-                    router.push("/homepage")
+                    $router.push("/homepage")
                 })
             } else {
                 message.error({ content: res.message, key, duration: 3 })
