@@ -365,3 +365,101 @@ export const pieChartOptions = {
         return Math.random() * 200
     },
 }
+
+export const ScatterChartOneOptions = {
+    color: "#8C35F3",
+    tooltip: {
+        trigger: "item",
+        backgroundColor: "rgba(50,50,50,0.8)",
+        borderColor: "rgba(50,50,50,0.8)",
+        padding: [2, 5, 2, 5],
+        textStyle: {
+            color: "#FFF",
+            fontStyle: "oblique",
+            fontWeight: "bold",
+        },
+        formatter: "{b}<br>{a}:{c}min",
+    },
+    title: {
+        textBaseline: "middle",
+        left: 30,
+        top: "50%",
+        textStyle: {
+            color: "#5A5C65",
+        },
+    },
+    singleAxis: {
+        left: 150,
+        top: "50%",
+        type: "category",
+        boundaryGap: false,
+        height: "5%",
+        axisLabel: {
+            color: "#5A5C65",
+            fontWeight: "bold",
+        },
+        axisTick: {
+            lineStyle: {
+                width: 5,
+            },
+        },
+    },
+    series: {
+        singleAxisIndex: 0,
+        coordinateSystem: "singleAxis",
+        type: "scatter",
+        name: "总计",
+        symbolSize: function (dataItem) {
+            return dataItem * 0.16
+        },
+    },
+}
+
+export const ScatterChartTwoOptions = {
+    color: "#FBD379",
+    tooltip: {
+        trigger: "item",
+        backgroundColor: "rgba(50,50,50,0.8)",
+        borderColor: "rgba(50,50,50,0.8)",
+        padding: [2, 5, 2, 5],
+        textStyle: {
+            color: "#FFF",
+            fontStyle: "oblique",
+            fontWeight: "bold",
+        },
+        formatter: "{b}<br>{a}:{c}kcal",
+    },
+    title: {
+        textBaseline: "middle",
+        right: 30,
+        top: "50%",
+        textStyle: {
+            color: "#5A5C65",
+        },
+    },
+    singleAxis: {
+        right: 150,
+        top: "50%",
+        type: "category",
+        boundaryGap: false,
+        height: "5%",
+        axisLabel: {
+            color: "#5A5C65",
+            fontWeight: "bold",
+        },
+        axisTick: {
+            lineStyle: {
+                width: 5,
+            },
+        },
+    },
+    series: {
+        singleAxisIndex: 0,
+        coordinateSystem: "singleAxis",
+        type: "scatter",
+        name: "总计",
+        symbolSize: function (dataItem) {
+            return dataItem * 0.035
+        },
+    },
+}

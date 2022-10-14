@@ -18,6 +18,8 @@ export const useHomePageStore = defineStore("homePage", {
                 seriesTwo: [],
                 drilldownData: [],
                 seriesThree: [],
+                seriesFour: [],
+                seriesFive: [],
                 totalTime: 0,
                 totalDay: 0,
                 avgWeight: 0,
@@ -59,6 +61,10 @@ export const useHomePageStore = defineStore("homePage", {
                 this.data.seriesTwo = seriesDataTwo
                 // 图表3数据处理
                 this.data.seriesThree = getChartThreeData(res)
+                // 图表4数据处理
+                this.data.seriesFour = getChartFourData(res, getdateFormated)
+                // 图表5数据处理
+                this.data.seriesFive = getChartFiveData(res, getdateFormated)
 
                 return Promise.resolve("获取数据成功")
             } else {

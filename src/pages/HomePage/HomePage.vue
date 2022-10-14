@@ -84,7 +84,7 @@ const baseKpi = defineAsyncComponent(() => import("components/BaseKpi.vue"))
 
 const visible = ref(false)
 // 蒙版按钮
-const startStyleShow = ref(true)
+const startStyleShow = ref(false)
 let currentTab = shallowRef(null)
 // 获取store
 const homePageStore = useHomePageStore()

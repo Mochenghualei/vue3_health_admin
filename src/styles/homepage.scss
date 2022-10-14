@@ -112,6 +112,10 @@ $default-broder-radius: 30px;
 
         .health_part_three {
             height: 20%;
+            // overflow-y: hidden;
+            // overflow-x: visible;
+            border-radius: 0;
+            background-color: transparent;
         }
     }
 

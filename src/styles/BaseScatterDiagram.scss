@@ -1,0 +1,95 @@
+$default-color: #222430;
+$default-broder-radius: 30px;
+
+.scatter_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .title_area {
+    position: relative;
+    top: -6px;
+    width: 100%;
+    margin: 10px 0;
+
+    .sandian_title_line {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #2f313c;
+      transition: all ease 1s;
+    }
+
+    .sandian_title {
+      position: absolute;
+      top: -17px;
+      width: 120px;
+      transition: all 700ms ease;
+      height: 34px;
+      background-color: #181b22;
+      color: #fff;
+      text-align: center;
+      line-height: 34px;
+      vertical-align: middle;
+      font-size: 15px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+
+  .chart_area {
+    width: 100%;
+    flex: 1;
+    display: flex;
+
+    .area_one,
+    .area_two {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: $default-broder-radius;
+      background-color: $default-color;
+      transition: all 700ms ease;
+
+      span {
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+
+    .area_one {
+      width: var(--width1);
+      margin-right: 10px;
+    }
+
+    .area_two {
+      width: var(--width2);
+      margin-left: 10px;
+    }
+
+    .area_one.active {
+      width: var(--width1);
+    }
+
+    .area_two.active {
+      width: var(--width2);
+    }
+  }
+
+  .v-enter-active {
+    transition: opacity 2s ease;
+  }
+
+  .v-leave-active {
+    transition: opacity .2s ease;
+  }
+
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
+}

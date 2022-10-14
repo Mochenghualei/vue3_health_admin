@@ -1,10 +1,5 @@
 <template>
-  <div class="container">
-    <div class="title" v-if="flag">
-      <span class="left" /><span class="middle">{{ title }}</span><span class="right" />
-    </div>
-    <div class="canvas" ref="pieChart"></div>
-  </div>
+  <div class="canvas" ref="ScatterChartTwo"></div>
 </template>
 
 <script setup>
@@ -17,20 +12,17 @@ import {
   getCurrentInstance,
   computed,
   watch,
-  nextTick,
 } from "vue"
-import { pieChartOptions as optionsObj } from "./baseOptions"
 import { resize } from "utils/resizeChart"
+import { ScatterChartTwoOptions } from "./baseOptions"
 
 // 获取全局变量
 const { proxy } = getCurrentInstance()
-const pieChart = ref()
+const ScatterChartTwo = ref()
 const myChart = shallowRef(null)
 const timer = ref(null)
-const flag = ref(false)
 
 const props = defineProps({
-  title: String,
   series: {
     type: Array,
     required: true,
@@ -41,8 +33,7 @@ const props = defineProps({
 const { series } = toRefs(props)
 
 onMounted(() => {
-  flag.value = false
-  myChart.value = proxy.$echarts.init(pieChart.value)
+  myChart.value = proxy.$echarts.init(ScatterChartTwo.value)
   resize(myChart.value)
   timer.value = setTimeout(() => {
     myChart.value.resize()
@@ -55,20 +46,33 @@ onBeforeUnmount(() => {
 })
 
 function setOptions() {
-  flag.value = true
   if (myChart.value) {
-    myChart.value.setOption(options.value, true);
+    myChart.value.setOption(options.value)
   }
 }
 
 const options = computed(() => {
-  return {
-    ...optionsObj,
+  const xAxisData = [
+    "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"
+  ]
+  const day = '2022'
+  const options = {
+    ...ScatterChartTwoOptions,
+    title: {
+      ...ScatterChartTwoOptions.title,
+      text: day
+    },
+    singleAxis: {
+      ...ScatterChartTwoOptions.singleAxis,
+      data: xAxisData,
+    },
     series: {
-      ...optionsObj.series,
+      ...ScatterChartTwoOptions.series,
       data: series.value
     }
   }
+
+  return options
 })
 
 watch(series, () => {
@@ -76,6 +80,9 @@ watch(series, () => {
 })
 </script>
 
-<style scope lang="scss">
-@import "styles/basechart.scss"
+<style scoped lang="scss">
+.canvas {
+  width: 100%;
+  height: 100%;
+}
 </style>
