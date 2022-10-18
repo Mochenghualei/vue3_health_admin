@@ -1,7 +1,9 @@
-import { ref, reactive } from "vue"
+import { ref, reactive, inject } from "vue"
 import dayjs from "dayjs"
 import "dayjs/locale/zh-cn"
 import locale from "ant-design-vue/es/date-picker/locale/zh_CN"
+import { addweight } from "api/request"
+import { useHomePageStore } from "store/homePage"
 export function useForm() {
     // 日期选择器国际化设置
     dayjs.locale("zh-cn")
@@ -149,16 +151,49 @@ export function useForm() {
         { value: "HIIT" },
     ]
 
+    const submitLoading = ref(false)
+    const message = inject("message")
+    // 重新请求
+    const homePageStore = useHomePageStore()
+    function getData() {
+        homePageStore.getGlobalData()
+    }
     const handleChange = (value) => {
         console.log(`selected ${value}`)
     }
 
     const onFinish = (values) => {
-        console.log("Success:", values)
+        submitLoading.value = true
+        // 处理日期数据
+        const formObj = {
+            ...values,
+            date: new Date(values.date).getTime() / 1000,
+        }
+        // 发送请求
+        addweight(formObj).then((res) => {
+            if (res.code == 200) {
+                // 更新数据
+                getData()
+                message.success({ content: res.msg, duration: 2 })
+                submitLoading.value = false
+                // 重置表单
+                setTimeout(() => {
+                    resetForm()
+                }, 100)
+            } else {
+                message.error({ content: res.msg, duration: 2 })
+                submitLoading.value = false
+            }
+        })
+        console.log("formObj====", formObj)
     }
 
     const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo)
+        submitLoading.value = true
+        setTimeout(() => {
+            submitLoading.value = false
+            console.log("Failed:", errorInfo)
+        }, 1000)
     }
 
     const resetForm = () => {
@@ -176,5 +211,6 @@ export function useForm() {
         onFinishFailed,
         resetForm,
         locale,
+        submitLoading,
     }
 }

@@ -3,11 +3,11 @@
     <div class="title_area">
       <!-- 散点图标题区域 -->
       <div class="sandian_title_line" :style="{
-        backgroundColor: titleLeft == 25 ? '#7731CC' : '#D0B06B'
+        backgroundColor: titleLeft == '5%' ? '#7731CC' : '#D0B06B'
       }"></div>
       <!-- 散点图title区域 -->
-      <div :style="{ left: titleLeft + 'px' }" class="sandian_title">
-        <span>{{ titleLeft == 25 ? "时长累计" : "热量累计" }}</span>
+      <div :style="{ left: titleLeft }" class="sandian_title">
+        <span>{{ titleLeft == "5%" ? "时长累计" : "热量累计" }}</span>
       </div>
     </div>
 
@@ -51,7 +51,8 @@ defineProps({
 
 const width1 = ref("95%")
 const width2 = ref("5%")
-const titleLeft = ref(25)
+const titleLeft = ref("5%")
+const titleRight = ref("")
 
 const areaOne = ref()
 const areaTwo = ref()
@@ -63,14 +64,14 @@ function toggleActive(index) {
       areaTwo.value.classList.remove('active')
       width1.value = '95%'
       width2.value = '5%'
-      titleLeft.value = 25
+      titleLeft.value = "5%"
       break;
     case 2:
       areaOne.value.classList.remove("active")
       areaTwo.value.classList.add('active')
       width1.value = '5%'
       width2.value = '95%'
-      titleLeft.value = 950
+      titleLeft.value = "85%"
       break;
   }
 }

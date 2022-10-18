@@ -82,7 +82,7 @@ const BaseWeather = defineAsyncComponent(() =>
 )
 const baseKpi = defineAsyncComponent(() => import("components/BaseKpi.vue"))
 
-const visible = ref(false)
+const visible = ref(true)
 // 蒙版按钮
 const startStyleShow = ref(false)
 let currentTab = shallowRef(null)
