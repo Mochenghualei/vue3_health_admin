@@ -9,6 +9,9 @@ export const getUserList = () => request({ url: "/weight", method: "get" })
 // 新增数据
 export const addweight = (params = {}) =>
     request({ url: "/addweight", method: "post", data: params })
+// 更新数据
+export const updateWeight = (params = {}) =>
+    request({ url: "/update", method: "post", data: params })
 // 删除数据
 export const delData = (params = {}) =>
     request({ url: "/delete", method: "post", data: params })

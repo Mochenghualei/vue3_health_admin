@@ -24,6 +24,8 @@ export const useHomePageStore = defineStore("homePage", {
                 totalDay: 0,
                 avgWeight: 0,
                 avgBMI: 0,
+                // 总条数
+                totalCount: 0,
             },
         }
     },
@@ -32,6 +34,8 @@ export const useHomePageStore = defineStore("homePage", {
         async getGlobalData() {
             const res = await getUserList()
             if (res && res.length) {
+                // 获取总条数
+                this.data.totalCount = res.length
                 // 指标
                 let totalTime = 0,
                     totalWeight = 0

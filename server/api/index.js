@@ -13,7 +13,7 @@ exports.getData = (req, res) => {
     })
 }
 
-// 新增数据/更新数据
+// 新增数据
 exports.postData = (req, res) => {
     let obj = req.body
     if (!obj) {
@@ -36,7 +36,7 @@ exports.postData = (req, res) => {
                 msg: "该时间数据已存在",
             })
         } else {
-            // 新增，更新数据
+            // 新增
             let sql1 = "INSERT INTO my_weight SET ?"
             let newObj = {
                 ...obj,
@@ -61,6 +61,45 @@ exports.postData = (req, res) => {
             })
         }
     })
+}
+
+// 更新数据
+exports.updateData = (req, res) => {
+    let obj = req.body
+    if (!obj) {
+        res.send({
+            code: 201,
+            msg: "参数为空",
+        })
+        return
+    }
+    let sql =
+        "UPDATE my_weight SET weight = ?,caloric = ?,sporttime = ? WHERE date = ?"
+    let newObj = {
+        ...obj,
+        training: JSON.stringify(obj.training),
+    }
+    db.query(
+        sql,
+        [newObj.weight, newObj.caloric, newObj.trainingTime, newObj.date],
+        (err, result) => {
+            if (err) {
+                return res.send("error" + err.message)
+            }
+            console.log("值更新")
+            if (result.affectedRows > 0) {
+                res.send({
+                    code: 200,
+                    msg: "更新成功",
+                })
+            } else {
+                res.send({
+                    code: 301,
+                    msg: "更新失败",
+                })
+            }
+        }
+    )
 }
 
 // 删除数据

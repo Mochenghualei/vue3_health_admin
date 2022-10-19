@@ -1,6 +1,8 @@
 <template>
-  <a-table class="ant-table-striped" bordered :data-source="data" :columns="columns" :scroll="{ x: 900, y: 300 }"
-    size="middle" :row-class-name="(_record, index) => (index % 2 === 1 ? 'table-striped' : null)">
+  <!-- 表格 -->
+  <a-table class="ant-table-striped" bordered :pagination="false" :data-source="data" :columns="columns"
+    :scroll="{ x: 900, y: 300 }" size="middle"
+    :row-class-name="(_record, index) => (index % 2 === 1 ? 'table-striped' : null)">
     <template #headerCell="{ column }">
       <template v-if="column.key === 'date'">
         <span style="color: #1890ff">日期</span>
@@ -19,7 +21,7 @@
           </template>
           搜索
         </a-button>
-        <a-button size="small" style="width: 90px" @click="handleReset(clearFilters)">
+        <a-button size="small" style="width: 90px" @click="handleReset(clearFilters,confirm)">
           重置
         </a-button>
       </div>
@@ -40,7 +42,7 @@
       </span>
       <template v-if="['weight', 'caloric','trainingTime'].includes(column.dataIndex)">
         <div>
-          <a-input v-if="editableData[record.key]" v-model:value="editableData[record.key][column.dataIndex]"
+          <a-input v-if="editableData[record.key]" v-model:value.number="editableData[record.key][column.dataIndex]"
             style="margin: -5px 0" />
           <template v-else>
             {{ text }}
@@ -49,15 +51,14 @@
       </template>
       <template v-else-if="column.key === 'trainingType'">
         <span>
-          <a-tag v-for="tag in record.types" :key="tag"
-            :color="tag === '胸' ? 'volcano' : tag === '核心' ? 'geekblue' : 'green'">
-            {{ tag.toUpperCase() }}
+          <a-tag v-for="tag in record.trainingType" :key="tag" :color="getTagColor(tag)">
+            {{ tag }}
           </a-tag>
         </span>
       </template>
       <template v-else-if="column.key === 'operation'">
         <div :style="{display:'flex',width:'190px',justifyContent:'space-around'}">
-          <a-popconfirm v-if="data.length" title="确认删除?" cancelText="取消" okText="确认" @confirm="onDelete(record.key)">
+          <a-popconfirm v-if="data.length" title="确认删除?" cancelText="取消" okText="确认" @confirm="onDelete(record.date)">
             <a>删除</a>
           </a-popconfirm>
           <div class="editable-row-operations">
@@ -72,172 +73,36 @@
             </span>
           </div>
         </div>
-
       </template>
     </template>
   </a-table>
+  <!-- 分页器 -->
+  <div>
+    <a-pagination v-model:current="currentPageNum" :total="totalCount" :showSizeChanger="false" show-less-items />
+  </div>
 </template>
-<script>
-import { SearchOutlined } from '@ant-design/icons-vue';
-import { defineComponent, reactive, ref, toRefs } from 'vue';
-import { cloneDeep } from "lodash-es"
-let data = ref([{
-  key: '1',
-  date: '2022-10-16',
-  weight: 63.5,
-  caloric: 300,
-  types: ['胸'],
-  trainingTime: 25
-}, {
-  key: '2',
-  date: '2022-10-15',
-  weight: 64,
-  caloric: 200,
-  types: ['胸', "核心"],
-  trainingTime: 25
-}, {
-  key: '3',
-  date: '2022-10-14',
-  weight: 64,
-  caloric: 500,
-  types: ['胸', "肩"],
-  trainingTime: 25
-}, {
-  key: '4',
-  date: '2022-10-13',
-  weight: 63.5,
-  caloric: 150,
-  types: ["核心"],
-  trainingTime: 25
-}, {
-  key: '5',
-  date: '2022-10-12',
-  weight: 63.5,
-  caloric: 220,
-  types: ['胸', "核心"],
-  trainingTime: 25
-},
-{
-  key: '6',
-  date: '2022-10-11',
-  weight: 64,
-  caloric: 250,
-  types: ['HIIT'],
-  trainingTime: 25
-}]);
-export default defineComponent({
-  components: {
-    SearchOutlined,
-  },
+<script setup>
+import { SearchOutlined } from "@ant-design/icons-vue"
+import { useTable } from "hooks/useTable"
 
-  setup() {
+const {
+  totalCount,
+  currentPageNum,
+  data,
+  searchInput,
+  columns,
+  searchText,
+  searchedColumn,
+  editableData,
+  handleSearch,
+  handleReset,
+  onDelete,
+  edit,
+  save,
+  cancel,
+  getTagColor,
+} = useTable()
 
-    const state = reactive({
-      searchText: '',
-      searchedColumn: '',
-    });
-    const searchInput = ref();
-    const columns = [{
-      title: 'Date',
-      dataIndex: 'date',
-      key: 'date',
-      fixed: 'left',
-      width: 80,
-      sorter: (a, b) => a.date - b.date,
-      sortDirections: ['descend', 'ascend'],
-      customFilterDropdown: true,
-      onFilter: (value, record) => record.name.toString().toLowerCase().includes(value.toLowerCase()),
-      onFilterDropdownVisibleChange: visible => {
-        if (visible) {
-          setTimeout(() => {
-            searchInput.value.focus();
-          }, 100);
-        }
-      },
-    }, {
-      title: '体重',
-      dataIndex: 'weight',
-      key: 'weight',
-      width: 50,
-      align: "center"
-    }, {
-      title: '热量',
-      dataIndex: 'caloric',
-      key: 'caloric',
-      width: 50,
-      align: "center"
-    },
-    {
-      title: '训练类型',
-      dataIndex: 'trainingType',
-      key: 'trainingType',
-      width: 80,
-      align: "center"
-    },
-    {
-      title: '运动时长',
-      dataIndex: 'trainingTime',
-      key: 'trainingTime',
-      width: 50,
-      align: "center"
-    },
-    {
-      title: '操作',
-      key: 'operation',
-      fixed: 'right',
-      width: 90,
-      align: "center"
-    }];
-
-    const handleSearch = (selectedKeys, confirm, dataIndex) => {
-      confirm();
-      state.searchText = selectedKeys[0];
-      state.searchedColumn = dataIndex;
-    };
-
-    const handleReset = clearFilters => {
-      clearFilters({
-        confirm: true,
-      });
-      state.searchText = '';
-    };
-
-    const onDelete = key => {
-      data.value = data.value.filter(item => item.key !== key);
-    };
-
-    const editableData = reactive({});
-
-    const edit = key => {
-      editableData[key] = cloneDeep(data.value.filter(item => key === item.key)[0]);
-    };
-
-    const save = key => {
-      Object.assign(data.value.filter(item => key === item.key)[0], editableData[key]);
-      delete editableData[key];
-    };
-
-    const cancel = key => {
-      delete editableData[key];
-    };
-
-    return {
-      data,
-      columns,
-      handleSearch,
-      handleReset,
-      onDelete,
-      searchInput,
-      editingKey: '',
-      editableData,
-      edit,
-      save,
-      cancel,
-      ...toRefs(state),
-    };
-  },
-
-});
 </script>
 <style scoped>
 .highlight {

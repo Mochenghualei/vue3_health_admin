@@ -42,8 +42,7 @@
 </template>
 
 <script setup>
-
-const { } = defineProps(["totalTime", "totalDay", "avgWeight", "avgBMI"])
+defineProps(["totalTime", "totalDay", "avgWeight", "avgBMI"])
 </script>
 
 <style scoped lang="scss">
