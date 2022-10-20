@@ -17,14 +17,14 @@
       <div :style="{'--width1':width1}" ref="areaOne" class="area_one" @click="toggleActive(1)">
         <BaseScatterChartOne v-if="width1 == '95%'" :series="seriesFour"></BaseScatterChartOne>
         <transition>
-          <span v-show="width1 == '5%'" class="iconfont icon-zuo-copy"></span>
+          <span v-show="width1 == '5%'" class="iconfont icon-zuo-copy" :style="{cursor:'pointer'}"></span>
         </transition>
       </div>
       <!-- 散点图2 -->
       <div :style="{'--width2':width2}" ref="areaTwo" class="area_two" @click="toggleActive(2)">
         <BaseScatterChartTwo v-if="width2 == '95%'" :series="seriesFive"></BaseScatterChartTwo>
         <transition>
-          <span v-show="width2 == '5%'" class="iconfont icon-zuo"></span>
+          <span v-show="width2 == '5%'" class="iconfont icon-zuo" :style="{cursor:'pointer'}"></span>
         </transition>
       </div>
     </div>

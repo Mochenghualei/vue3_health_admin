@@ -1,7 +1,7 @@
 <template>
-    <div class="health_part_one">4</div>
-    <div class="health_part_two">5</div>
-    <div class="health_part_three">6</div>
+    <div class="read_part_one"></div>
+    <div class="read_part_two"></div>
+    <div class="read_part_three"></div>
 </template>
 
 <script setup>

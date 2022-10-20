@@ -390,7 +390,7 @@ export const ScatterChartOneOptions = {
     },
     singleAxis: {
         left: 150,
-        top: "50%",
+        top: "47.5%",
         type: "category",
         boundaryGap: false,
         height: "5%",
@@ -439,7 +439,7 @@ export const ScatterChartTwoOptions = {
     },
     singleAxis: {
         right: 150,
-        top: "50%",
+        top: "47.5%",
         type: "category",
         boundaryGap: false,
         height: "5%",

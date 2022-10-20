@@ -1,7 +1,7 @@
 <template>
   <!-- 表格 -->
   <a-table class="ant-table-striped" bordered :pagination="false" :data-source="data" :columns="columns"
-    :scroll="{ x: 900, y: 300 }" size="middle"
+    :scroll="{ x: 900, y: 300 }" size="middle" :loading="loading"
     :row-class-name="(_record, index) => (index % 2 === 1 ? 'table-striped' : null)">
     <template #headerCell="{ column }">
       <template v-if="column.key === 'date'">
@@ -63,10 +63,10 @@
           </a-popconfirm>
           <div class="editable-row-operations">
             <span v-if="editableData[record.key]">
-              <a-typography-link @click="save(record.key)">保存</a-typography-link>
-              <a-popconfirm title="确认取消?" cancelText="取消" okText="确认" @confirm="cancel(record.key)">
-                <a>取消</a>
+              <a-popconfirm title="确认保存?" cancelText="取消" okText="确认" @confirm="save(record,record.key)">
+                <a>保存</a>
               </a-popconfirm>
+              <a @click="cancel(record.key)">取消</a>
             </span>
             <span v-else>
               <a @click="edit(record.key)">编辑</a>
@@ -101,6 +101,7 @@ const {
   save,
   cancel,
   getTagColor,
+  loading
 } = useTable()
 
 </script>

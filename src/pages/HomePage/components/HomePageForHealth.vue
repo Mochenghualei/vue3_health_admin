@@ -9,7 +9,7 @@
         <!-- 左侧图表 -->
         <div class="area_one" :style="{'--flex1':flex1}" ref="areaOne" @click="toggleActive(1)">
             <!-- 切换图标 -->
-            <span class="iconfont icon-zuo-copy" :style="{fontSize:'20px'}" v-if="flex1=='5%'"></span>
+            <span class="iconfont icon-zuo-copy" :style="{fontSize:'20px',cursor:'pointer'}" v-if="flex1=='5%'"></span>
             <!-- 图表 -->
             <BasePieChart title="状态分布" :series="data.seriesThree" v-if="data.seriesThree.length && flex1=='35%'">
             </BasePieChart>
@@ -20,7 +20,10 @@
                 :curIdx="currentIdx" v-if="data.seriesTwo.length"></BaseBarChart>
         </div>
         <!-- 右侧图表 -->
-        <div class="area_three" :style="{'--flex3':flex3}" ref="areaThree" @click="toggleActive(3)"></div>
+        <div class="area_three" :style="{'--flex3':flex3}" ref="areaThree" @click="toggleActive(3)">
+            <span class="iconfont icon-zuo" :style="{fontSize:'20px',cursor:'pointer'}" v-if="flex3=='5%'"></span>
+            <BaseGaugeChart title="完成度" v-if="flex3=='35%'"></BaseGaugeChart>
+        </div>
     </div>
     <div class="health_part_three">
         <BaseScatterDiagram v-if="data.seriesFour.length" :seriesFour="data.seriesFour" :seriesFive="data.seriesFive">
@@ -34,6 +37,7 @@ import BaseLineChart from "./health/BaseLineChart.vue"
 import BaseBarChart from './health/BaseBarChart.vue'
 import BasePieChart from './health/BasePieChart.vue'
 import BaseScatterDiagram from './health/BaseScatterDiagram.vue'
+import BaseGaugeChart from './health/BaseGaugeChart.vue'
 import { useHomePageStore } from "store/homePage"
 
 const message = inject("message")

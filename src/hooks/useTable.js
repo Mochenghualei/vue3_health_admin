@@ -20,16 +20,18 @@ export function useTable() {
 
     // 表格相关逻辑
     let data = ref([])
-
+    const loading = ref(false)
     onMounted(() => {
         getTableData()
     })
     // 获取数据
     function getTableData() {
+        loading.value = true
         let tableSeries = ref([])
         getTableList({ page: currentPageNum.value, pageSize: 20 })
             .then((res) => {
                 if (res.code == 200) {
+                    loading.value = false
                     if (Object.keys(res.tableInfo).length) {
                         res.tableInfo.data.forEach((item, index) => {
                             tableSeries.value.push({
@@ -45,6 +47,7 @@ export function useTable() {
                         currentPageNum.value = res.tableInfo.currentPage
                     }
                 } else {
+                    loading.value = false
                     message.error({ content: res.msg, duration: 2 })
                 }
             })
@@ -157,9 +160,33 @@ export function useTable() {
         )
     }
 
-    function save(key) {
-        onUpdate(editableData[key])
+    function save(record, key) {
+        // 判断新旧对象是否相等，如果相等则没有实际修改
+        let isEqual = isObjectValueEqual(editableData[key], record)
+        if (!isEqual) {
+            onUpdate(editableData[key])
+        }
         delete editableData[key]
+    }
+
+    function isObjectValueEqual(newVal, oldVal) {
+        let oldValProps = Object.getOwnPropertyNames(oldVal)
+        let newValProps = Object.getOwnPropertyNames(newVal)
+
+        if (newValProps.length !== oldValProps.length) {
+            return false
+        }
+
+        for (let i = 0; i < oldValProps.length; i++) {
+            let propName = oldValProps[i]
+            let propA = oldVal[propName]
+            let propB = newVal[propName]
+            if (propA.toString().trim() !== propB.toString().trim()) {
+                return false
+            }
+        }
+
+        return true
     }
 
     // 更新请求
@@ -222,6 +249,7 @@ export function useTable() {
         columns,
         ...toRefs(state),
         editableData,
+        loading,
         handleSearch,
         handleReset,
         onDelete,
