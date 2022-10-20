@@ -2,9 +2,9 @@
     <div class="login_container">
         <section>
             <div class="form">
-                <p>login</p>
+                <p>登录</p>
                 <form>
-                    <input type="text" ref="nameInput" placeholder="用户名" v-model.lazy.trim="username" />
+                    <input type="text" v-focus placeholder="用户名" v-model.lazy.trim="username" />
                     <span class="passInput">
                         <input :type="showPassWord ? 'text' : 'password'" placeholder="密码"
                             v-model.lazy.trim="password" />
@@ -30,14 +30,14 @@ import { useUserStore } from "store/user"
 
 const message = inject("message")
 
-// get input focus
-onMounted(() => {
-    nameInput.value.focus()
-})
-
+// get input focus 
+const vFocus = {
+    mounted(el) {
+        el.focus()
+    }
+}
 // use pinia
 const userStore = useUserStore()
-const nameInput = ref(null)
 const username = ref("")
 const password = ref("")
 const showPassWord = ref(false)

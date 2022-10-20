@@ -73,7 +73,7 @@ const options = computed(() => {
   const gaugeData = [
     {
       value: 20,
-      name: 'Perfect',
+      name: '目标完成度1',
       title: {
         offsetCenter: ['0%', '-55%'],
         color: "#fff",
@@ -86,7 +86,7 @@ const options = computed(() => {
     },
     {
       value: 40,
-      name: 'Good',
+      name: '目标完成度2',
       title: {
         offsetCenter: ['0%', '-14%'],
         color: "#fff",
@@ -99,7 +99,7 @@ const options = computed(() => {
     },
     {
       value: 60,
-      name: 'Commonly',
+      name: '目标完成度3',
       title: {
         offsetCenter: ['0%', '27%'],
         color: "#fff",
