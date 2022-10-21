@@ -115,6 +115,8 @@ const options = computed(() => {
 
     series: [
       {
+        animationDelay: 100,
+        animationDuration: 1400,
         type: 'gauge',
         startAngle: 90,
         endAngle: -270,

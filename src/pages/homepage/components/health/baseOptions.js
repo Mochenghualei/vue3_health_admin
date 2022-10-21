@@ -1,6 +1,4 @@
 export const lineChartOptions = {
-    animationDuration: 1000,
-    animationDelay: 300,
     // 提示框
     tooltip: {
         trigger: "axis",
@@ -113,6 +111,8 @@ export const lineChartOptions = {
     ],
     series: [
         {
+            animationDuration: 1200,
+            animationDelay: 100,
             z: 1,
             zlevel: 1,
             color: "#9FE080",
@@ -151,12 +151,12 @@ export const lineChartOptions = {
                         global: false, // 缺省为 false
                     },
                 },
-                animation: true,
-                animationDuration: 1000,
             },
             showSymbol: false,
         },
         {
+            animationDuration: 1200,
+            animationDelay: 100,
             z: 2,
             zlevel: 2,
             type: "line",
@@ -196,6 +196,8 @@ export const lineChartOptions = {
 }
 
 export const barChartOptions = {
+    animationDuration: 1200,
+    animationDelay: 200,
     tooltip: {
         trigger: "axis",
         backgroundColor: "rgba(50,50,50,0.8)",
@@ -342,9 +344,13 @@ export const pieChartOptions = {
         containLabel: true,
     },
     series: {
+        // animationType: "scale",
+        // animationEasing: "elasticOut",
+        animationDelay: 100,
+        animationDuration: 1300,
         name: "次数",
         type: "pie",
-        radius: [40, 90],
+        radius: [50, 100],
         center: ["50%", "50%"],
         roseType: "area",
         itemStyle: {
@@ -358,11 +364,6 @@ export const pieChartOptions = {
             length: 10,
             length2: 20,
         },
-    },
-    animationType: "scale",
-    animationEasing: "elasticOut",
-    animationDelay: function (idx) {
-        return Math.random() * 200
     },
 }
 
@@ -405,6 +406,7 @@ export const ScatterChartOneOptions = {
         },
     },
     series: {
+        animationDuration: 1200,
         singleAxisIndex: 0,
         coordinateSystem: "singleAxis",
         type: "scatter",
@@ -454,6 +456,7 @@ export const ScatterChartTwoOptions = {
         },
     },
     series: {
+        animationDuration: 1200,
         singleAxisIndex: 0,
         coordinateSystem: "singleAxis",
         type: "scatter",
