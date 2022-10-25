@@ -4,10 +4,18 @@
             <div class="form">
                 <p>登录</p>
                 <form>
-                    <input type="text" v-focus placeholder="用户名" v-model.lazy.trim="username" />
+                    <input
+                        type="text"
+                        v-focus
+                        placeholder="用户名"
+                        v-model.lazy.trim="username"
+                    />
                     <span class="passInput">
-                        <input :type="showPassWord ? 'text' : 'password'" placeholder="密码"
-                            v-model.lazy.trim="password" />
+                        <input
+                            :type="showPassWord ? 'text' : 'password'"
+                            placeholder="密码"
+                            v-model.lazy.trim="password"
+                        />
                         <span class="eye" @click="showPassWord = !showPassWord">
                             <eye-filled v-if="!showPassWord" />
                             <eye-invisible-filled v-else />
@@ -30,11 +38,11 @@ import { useUserStore } from "store/user"
 
 const message = inject("message")
 
-// get input focus 
+// get input focus
 const vFocus = {
     mounted(el) {
         el.focus()
-    }
+    },
 }
 // use pinia
 const userStore = useUserStore()
@@ -63,17 +71,19 @@ function login() {
         (res) => {
             if (res.code == 200 && res.data.token) {
                 // 存储tokens
-                userStore.setToken({
-                    token: res.data.token,
-                    username: res.data.username,
-                }).then(() => {
-                    message.success({
-                        content: res.message,
-                        key,
-                        duration: 3,
+                userStore
+                    .setToken({
+                        token: res.data.token,
+                        username: res.data.username,
                     })
-                    $router.push("/homepage")
-                })
+                    .then(() => {
+                        message.success({
+                            content: res.message,
+                            key,
+                            duration: 3,
+                        })
+                        $router.push("/homepage")
+                    })
             } else {
                 message.error({ content: res.message, key, duration: 3 })
             }

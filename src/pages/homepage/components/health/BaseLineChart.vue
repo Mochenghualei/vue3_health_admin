@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <div class="title">
-            <span class="left" /><span class="middle">{{title}}</span><span class="right" />
+            <span class="left" /><span class="middle">{{ title }}</span
+            ><span class="right" />
         </div>
         <div ref="lineChart" class="canvas"></div>
     </div>
@@ -31,13 +32,13 @@ const props = defineProps({
     series: {
         type: Array,
         required: true,
-        default: () => []
+        default: () => [],
     },
     xAxisData: {
         type: Array,
         required: true,
-        default: () => []
-    }
+        default: () => [],
+    },
 })
 
 const { series, xAxisData } = toRefs(props)
@@ -101,5 +102,5 @@ watch(series, () => {
 </script>
 
 <style scoped lang="scss">
-@import "styles/basechart.scss"
+@import "styles/basechart.scss";
 </style>

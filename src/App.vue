@@ -5,10 +5,9 @@
     </a-config-provider>
 </template>
 
-
 <script setup>
 import { ref } from "vue"
-import zhCN from 'ant-design-vue/es/locale/zh_CN';
+import zhCN from "ant-design-vue/es/locale/zh_CN"
 </script>
 <style scoped>
 /* 过渡动画 */

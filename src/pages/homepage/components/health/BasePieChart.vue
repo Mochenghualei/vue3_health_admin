@@ -1,23 +1,24 @@
 <template>
-  <div class="container">
-    <div class="title" v-if="flag">
-      <span class="left" /><span class="middle">{{ title }}</span><span class="right" />
+    <div class="container">
+        <div class="title" v-if="flag">
+            <span class="left" /><span class="middle">{{ title }}</span
+            ><span class="right" />
+        </div>
+        <div class="canvas" ref="pieChart"></div>
     </div>
-    <div class="canvas" ref="pieChart"></div>
-  </div>
 </template>
 
 <script setup>
 import {
-  ref,
-  toRefs,
-  shallowRef,
-  onMounted,
-  onBeforeUnmount,
-  getCurrentInstance,
-  computed,
-  watch,
-  nextTick,
+    ref,
+    toRefs,
+    shallowRef,
+    onMounted,
+    onBeforeUnmount,
+    getCurrentInstance,
+    computed,
+    watch,
+    nextTick,
 } from "vue"
 import { pieChartOptions as optionsObj } from "./baseOptions"
 import { resize } from "utils/resizeChart"
@@ -30,52 +31,52 @@ const timer = ref(null)
 const flag = ref(false)
 
 const props = defineProps({
-  title: String,
-  series: {
-    type: Array,
-    required: true,
-    default: () => []
-  },
+    title: String,
+    series: {
+        type: Array,
+        required: true,
+        default: () => [],
+    },
 })
 
 const { series } = toRefs(props)
 
 onMounted(() => {
-  flag.value = false
-  myChart.value = proxy.$echarts.init(pieChart.value)
-  resize(myChart.value)
-  timer.value = setTimeout(() => {
-    myChart.value.resize()
-    setOptions()
-  }, 800)
+    flag.value = false
+    myChart.value = proxy.$echarts.init(pieChart.value)
+    resize(myChart.value)
+    timer.value = setTimeout(() => {
+        myChart.value.resize()
+        setOptions()
+    }, 800)
 })
 
 onBeforeUnmount(() => {
-  clearTimeout(timer.value)
+    clearTimeout(timer.value)
 })
 
 function setOptions() {
-  flag.value = true
-  if (myChart.value) {
-    myChart.value.setOption(options.value, true);
-  }
+    flag.value = true
+    if (myChart.value) {
+        myChart.value.setOption(options.value, true)
+    }
 }
 
 const options = computed(() => {
-  return {
-    ...optionsObj,
-    series: {
-      ...optionsObj.series,
-      data: series.value
+    return {
+        ...optionsObj,
+        series: {
+            ...optionsObj.series,
+            data: series.value,
+        },
     }
-  }
 })
 
 watch(series, () => {
-  setOptions()
+    setOptions()
 })
 </script>
 
 <style scope lang="scss">
-@import "styles/basechart.scss"
+@import "styles/basechart.scss";
 </style>

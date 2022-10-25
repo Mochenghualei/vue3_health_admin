@@ -10,7 +10,10 @@
         </div>
 
         <!-- 抽屉 -->
-        <MainDrawer v-model:visible="visible" v-if="!startStyleShow"></MainDrawer>
+        <MainDrawer
+            v-model:visible="visible"
+            v-if="!startStyleShow"
+        ></MainDrawer>
 
         <!-- 主体区域 -->
         <div class="home_main" v-if="!startStyleShow">
@@ -26,9 +29,10 @@
                 <div class="welcome">
                     Welcome
                     {{
-                    username
-                    ? username.charAt(0).toUpperCase() + username.slice(1)
-                    : ""
+                        username
+                            ? username.charAt(0).toUpperCase() +
+                              username.slice(1)
+                            : ""
                     }}
                 </div>
                 <div class="logout_btn">
@@ -47,8 +51,12 @@
 
             <!-- 指标 -->
             <div class="kpi_container">
-                <baseKpi :totalTime="data.totalTime" :totalDay="data.totalDay" :avgWeight="data.avgWeight"
-                    :avgBMI="data.avgBMI"></baseKpi>
+                <baseKpi
+                    :totalTime="data.totalTime"
+                    :totalDay="data.totalDay"
+                    :avgWeight="data.avgWeight"
+                    :avgBMI="data.avgBMI"
+                ></baseKpi>
             </div>
 
             <!-- 天气 -->
@@ -58,7 +66,9 @@
 
             <!-- 切换 -->
             <div class="tabs_container" v-once>
-                <BaseSwitchTabs @handleSwitchTab="handleSwitchTab"></BaseSwitchTabs>
+                <BaseSwitchTabs
+                    @handleSwitchTab="handleSwitchTab"
+                ></BaseSwitchTabs>
             </div>
         </div>
     </div>
@@ -66,7 +76,7 @@
 
 <script setup>
 import { ref, defineAsyncComponent, shallowRef, inject } from "vue"
-import { useRouter } from "vue-router";
+import { useRouter } from "vue-router"
 
 import { useHomePageStore } from "store/homePage"
 import { useUserStore } from "store/user"
@@ -99,13 +109,12 @@ function handleSwitchTab(tab) {
 }
 
 function logout() {
-    userStore.logout().then(
-        res => {
-            if (res == 'removeTokenDone') {
-                $router.push("/login")
-                message.success({ content: "请重新登录", duration: 3 })
-            }
-        })
+    userStore.logout().then((res) => {
+        if (res == "removeTokenDone") {
+            $router.push("/login")
+            message.success({ content: "请重新登录", duration: 3 })
+        }
+    })
 }
 </script>
 <style scoped lang="scss">
