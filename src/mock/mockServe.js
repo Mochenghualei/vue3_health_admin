@@ -6,7 +6,7 @@ Mock.setup({
 
 Mock.mock(RegExp("/mock/login"), "post", (params) => {
     let { username, password } = JSON.parse(params.body)
-    if (username == "shuai" && password == "123456") {
+    if (password == "123456") {
         return {
             code: 200,
             message: "登录成功",

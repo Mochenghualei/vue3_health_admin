@@ -55,12 +55,30 @@ const range = ref()
 const playList = [
     {
         playUrl: new URL(
+            "../assets/mp3/Hayd - Head In The Clouds.mp3",
+            import.meta.url
+        ).href,
+        playTitle: "Head In The Clouds",
+        player: "Hayd",
+        cover: new URL("../assets/cover/《Head In The Clouds》cover.jpg", import.meta.url).href,
+    },
+    {
+        playUrl: new URL(
+            "../assets/mp3/G.E.M.邓紫棋-让世界暂停一分钟.mp3",
+            import.meta.url
+        ).href,
+        playTitle: "让世界暂停一分钟",
+        player: "邓紫棋",
+        cover: new URL("../assets/cover/《让世界暂停一分钟》cover.jpg", import.meta.url).href,
+    },
+    {
+        playUrl: new URL(
             "../assets/mp3/1-蔡依林邓紫棋-说爱你.mp3",
             import.meta.url
         ).href,
         playTitle: "说爱你",
         player: "蔡依林/邓紫棋",
-        cover: new URL("../assets/cover/one.png", import.meta.url).href,
+        cover: new URL("../assets/cover/《说爱你》cover.jpg", import.meta.url).href,
     },
     {
         playUrl: new URL("../assets/mp3/2-TaylorMe.flac", import.meta.url).href,
@@ -75,16 +93,7 @@ const playList = [
         ).href,
         playTitle: "孩子",
         player: "华晨宇",
-        cover: new URL("../assets/cover/one.png", import.meta.url).href,
-    },
-    {
-        playUrl: new URL(
-            "../assets/mp3/3-蔡依林吴青峰-倒带.mp3",
-            import.meta.url
-        ).href,
-        playTitle: "倒带",
-        player: "蔡依林/吴青峰",
-        cover: new URL("../assets/cover/one.png", import.meta.url).href,
+        cover: new URL("../assets/cover/《孩子》cover.jpg", import.meta.url).href,
     },
     {
         playUrl: new URL(
@@ -93,7 +102,7 @@ const playList = [
         ).href,
         playTitle: "爱笑的眼睛",
         player: "林俊杰",
-        cover: new URL("../assets/cover/one.png", import.meta.url).href,
+        cover: new URL("../assets/cover/《爱笑的眼睛》cover.jpg", import.meta.url).href,
     },
 ]
 
