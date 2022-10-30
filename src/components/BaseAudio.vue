@@ -1,14 +1,23 @@
 <template>
     <div class="container">
-        <audio @timeupdate="timeupdate" loop ref="player" :src="playList[playIndex].playUrl"></audio>
+        <audio
+            @timeupdate="timeupdate"
+            loop
+            ref="player"
+            :src="playList[playIndex].playUrl"
+        ></audio>
 
         <div class="play_cover">
             <!-- 封面 -->
-            <img :style="{
-                width: '45px',
-                height: '45px',
-                animationPlayState: playing ? 'running' : 'paused',
-            }" :src="playList[playIndex].cover" alt="none" />
+            <img
+                :style="{
+                    width: '45px',
+                    height: '45px',
+                    animationPlayState: playing ? 'running' : 'paused',
+                }"
+                :src="playList[playIndex].cover"
+                alt="none"
+            />
         </div>
         <!-- 曲名 -->
         <div class="play_title">
@@ -17,24 +26,38 @@
         </div>
         <!-- 进度条 -->
         <div class="input_time">
-            <input @change="changeHandler" ref="range" type="range" min="0" value="0" max="100" />
+            <input
+                @change="changeHandler"
+                ref="range"
+                type="range"
+                min="0"
+                value="0"
+                max="100"
+            />
             <div class="time">
                 <span class="left">{{ curTime }}</span>
                 <span class="right">{{
-                totalTime == "Invalid date" ? "00:00" : totalTime
+                    totalTime == "Invalid date" ? "00:00" : totalTime
                 }}</span>
             </div>
         </div>
 
         <!-- 按钮控件 -->
         <div class="btns">
-            <button class="btn_pre iconfont icon-shangyishou" @click="previousOne" :disabled="playIndex == 0"></button>
+            <button
+                class="btn_pre iconfont icon-shangyishou"
+                @click="previousOne"
+                :disabled="playIndex == 0"
+            ></button>
             <button class="btn_play" @click="play">
                 <i v-show="!playing" class="iconfont icon-gf-play"></i>
                 <i v-show="playing" class="iconfont icon-gf-pause2"></i>
             </button>
-            <button class="btn_next iconfont icon-xiayishou" @click="nextOne"
-                :disabled="playIndex == playList.length - 1"></button>
+            <button
+                class="btn_next iconfont icon-xiayishou"
+                @click="nextOne"
+                :disabled="playIndex == playList.length - 1"
+            ></button>
         </div>
     </div>
 </template>
@@ -47,7 +70,6 @@ let curTime = ref("00:00")
 let totalTime = ref("00:00")
 let playing = ref(false)
 let playIndex = ref(0)
-let playTitle = ref("")
 
 const player = ref()
 const range = ref()
@@ -60,7 +82,10 @@ const playList = [
         ).href,
         playTitle: "Head In The Clouds",
         player: "Hayd",
-        cover: new URL("../assets/cover/《Head In The Clouds》cover.jpg", import.meta.url).href,
+        cover: new URL(
+            "../assets/cover/《Head In The Clouds》cover.jpg",
+            import.meta.url
+        ).href,
     },
     {
         playUrl: new URL(
@@ -69,7 +94,10 @@ const playList = [
         ).href,
         playTitle: "让世界暂停一分钟",
         player: "邓紫棋",
-        cover: new URL("../assets/cover/《让世界暂停一分钟》cover.jpg", import.meta.url).href,
+        cover: new URL(
+            "../assets/cover/《让世界暂停一分钟》cover.jpg",
+            import.meta.url
+        ).href,
     },
     {
         playUrl: new URL(
@@ -78,7 +106,8 @@ const playList = [
         ).href,
         playTitle: "说爱你",
         player: "蔡依林/邓紫棋",
-        cover: new URL("../assets/cover/《说爱你》cover.jpg", import.meta.url).href,
+        cover: new URL("../assets/cover/《说爱你》cover.jpg", import.meta.url)
+            .href,
     },
     {
         playUrl: new URL("../assets/mp3/2-TaylorMe.flac", import.meta.url).href,
@@ -93,7 +122,8 @@ const playList = [
         ).href,
         playTitle: "孩子",
         player: "华晨宇",
-        cover: new URL("../assets/cover/《孩子》cover.jpg", import.meta.url).href,
+        cover: new URL("../assets/cover/《孩子》cover.jpg", import.meta.url)
+            .href,
     },
     {
         playUrl: new URL(
@@ -102,7 +132,10 @@ const playList = [
         ).href,
         playTitle: "爱笑的眼睛",
         player: "林俊杰",
-        cover: new URL("../assets/cover/《爱笑的眼睛》cover.jpg", import.meta.url).href,
+        cover: new URL(
+            "../assets/cover/《爱笑的眼睛》cover.jpg",
+            import.meta.url
+        ).href,
     },
 ]
 
