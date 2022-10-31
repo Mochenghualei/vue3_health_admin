@@ -1,24 +1,179 @@
-SET
-  NAMES UTF8;
 
-DROP DATABASE IF EXISTS health_admin_db;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+-- ----------------------------
+-- Table structure for my_weight
+-- ----------------------------
+DROP TABLE IF EXISTS `my_weight`;
+CREATE TABLE `my_weight`  (
+  `date` int(32) NOT NULL,
+  `weight` float(11, 1) NULL DEFAULT NULL,
+  `caloric` float(11, 1) NULL DEFAULT NULL,
+  `training` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sporttime` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`date`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
-CREATE DATABASE health_admin_db CHARSET = UTF8;
+-- ----------------------------
+-- Records of my_weight
+-- ----------------------------
+INSERT INTO `my_weight` VALUES (1641254400, 64.0, 241.0, '[\"核心\",\"燃脂\"]', 25);
+INSERT INTO `my_weight` VALUES (1641600000, 64.0, 0.0, '[\"胸\"]', 45);
+INSERT INTO `my_weight` VALUES (1641772800, 64.0, 0.0, '[\"手臂\"]', 40);
+INSERT INTO `my_weight` VALUES (1641945600, 64.0, 0.0, '[\"腿\"]', 35);
+INSERT INTO `my_weight` VALUES (1642204800, 64.0, 0.0, '[\"胸\"]', 45);
+INSERT INTO `my_weight` VALUES (1642377600, 64.0, 0.0, '[\"背\"]', 40);
+INSERT INTO `my_weight` VALUES (1642464000, 65.0, 260.0, '[\"燃脂\"]', 20);
+INSERT INTO `my_weight` VALUES (1642550400, 64.0, 254.0, '[\"核心\",\"燃脂\"]', 33);
+INSERT INTO `my_weight` VALUES (1642809600, 64.0, 0.0, '[\"胸\"]', 48);
+INSERT INTO `my_weight` VALUES (1642896000, 64.0, 302.0, '[\"手臂\",\"核心\"]', 65);
+INSERT INTO `my_weight` VALUES (1642982400, 64.0, 0.0, '[\"肩\"]', 52);
+INSERT INTO `my_weight` VALUES (1643068800, 64.0, 281.0, '[\"核心\",\"背\"]', 67);
+INSERT INTO `my_weight` VALUES (1643241600, 64.3, 235.0, '[\"核心\",\"胸\"]', 62);
+INSERT INTO `my_weight` VALUES (1643414400, 64.0, 437.0, '[\"腿\"]', 38);
+INSERT INTO `my_weight` VALUES (1643587200, 64.0, 291.0, '[\"核心\"]', 27);
+INSERT INTO `my_weight` VALUES (1643673600, 64.0, 0.0, '[\"手臂\"]', 31);
+INSERT INTO `my_weight` VALUES (1643846400, 64.1, 0.0, '[\"肩\"]', 30);
+INSERT INTO `my_weight` VALUES (1643932800, 64.0, 216.0, '[\"核心\"]', 24);
+INSERT INTO `my_weight` VALUES (1644019200, 64.0, 0.0, '[\"腿\"]', 42);
+INSERT INTO `my_weight` VALUES (1644105600, 64.0, 256.0, '[\"腿\",\"核心\"]', 59);
+INSERT INTO `my_weight` VALUES (1644192000, 64.0, 281.0, '[\"背\",\"燃脂\"]', 64);
+INSERT INTO `my_weight` VALUES (1644364800, 64.1, 182.0, '[\"胸\",\"核心\"]', 60);
+INSERT INTO `my_weight` VALUES (1644537600, 64.0, 206.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1644710400, 64.0, 176.0, '[\"核心\"]', 24);
+INSERT INTO `my_weight` VALUES (1644883200, 64.0, 215.0, '[\"核心\"]', 27);
+INSERT INTO `my_weight` VALUES (1645056000, 64.0, 0.0, '[\"胸\"]', 35);
+INSERT INTO `my_weight` VALUES (1645142400, 64.5, 210.0, '[\"核心\"]', 35);
+INSERT INTO `my_weight` VALUES (1645228800, 64.0, 0.0, '[\"手臂\"]', 35);
+INSERT INTO `my_weight` VALUES (1645488000, 64.0, 210.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1645574400, 64.0, 0.0, '[\"胸\"]', 35);
+INSERT INTO `my_weight` VALUES (1645747200, 64.0, 466.0, '[\"核心\",\"燃脂\"]', 50);
+INSERT INTO `my_weight` VALUES (1645920000, 64.0, 255.0, '[\"胸\",\"核心\"]', 62);
+INSERT INTO `my_weight` VALUES (1646092800, 64.0, 222.0, '[\"核心\"]', 31);
+INSERT INTO `my_weight` VALUES (1646265600, 64.0, 380.0, '[\"核心\"]', 46);
+INSERT INTO `my_weight` VALUES (1646352000, 64.0, 0.0, '[\"胸\"]', 46);
+INSERT INTO `my_weight` VALUES (1646611200, 64.0, 239.0, '[\"核心\"]', 35);
+INSERT INTO `my_weight` VALUES (1646784000, 64.0, 242.0, '[\"核心\"]', 34);
+INSERT INTO `my_weight` VALUES (1646870400, 64.0, 0.0, '[\"胸\"]', 30);
+INSERT INTO `my_weight` VALUES (1647043200, 64.0, 0.0, '[\"手臂\"]', 40);
+INSERT INTO `my_weight` VALUES (1647216000, 64.0, 219.0, '[\"核心\"]', 32);
+INSERT INTO `my_weight` VALUES (1647302400, 63.5, 0.0, '[\"胸\"]', 40);
+INSERT INTO `my_weight` VALUES (1647388800, 64.0, 246.0, '[\"核心\"]', 39);
+INSERT INTO `my_weight` VALUES (1647475200, 64.0, 0.0, '[\"胸\"]', 32);
+INSERT INTO `my_weight` VALUES (1647820800, 64.0, 215.0, '[\"核心\"]', 29);
+INSERT INTO `my_weight` VALUES (1647907200, 64.0, 0.0, '[\"胸\"]', 30);
+INSERT INTO `my_weight` VALUES (1647993600, 64.0, 200.0, '[\"核心\"]', 29);
+INSERT INTO `my_weight` VALUES (1648080000, 64.0, 100.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1648252800, 64.0, 365.0, '[\"手臂\",\"核心\"]', 53);
+INSERT INTO `my_weight` VALUES (1648339200, 64.0, 272.0, '[\"腿\"]', 37);
+INSERT INTO `my_weight` VALUES (1648425600, 64.0, 200.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1648598400, 65.5, 195.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1648684800, 64.0, 0.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1648857600, 64.5, 161.0, '[\"核心\"]', 24);
+INSERT INTO `my_weight` VALUES (1648944000, 64.0, 213.0, '[\"胸\",\"燃脂\"]', 62);
+INSERT INTO `my_weight` VALUES (1649203200, 64.0, 189.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1649289600, 64.0, 0.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1649462400, 64.0, 199.0, '[\"手臂\",\"燃脂\"]', 49);
+INSERT INTO `my_weight` VALUES (1649635200, 64.0, 222.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1649808000, 63.5, 180.0, '[\"核心\"]', 24);
+INSERT INTO `my_weight` VALUES (1650067200, 64.0, 181.0, '[\"胸\",\"燃脂\"]', 56);
+INSERT INTO `my_weight` VALUES (1650153600, 64.0, 232.0, '[\"核心\"]', 28);
+INSERT INTO `my_weight` VALUES (1650240000, 64.0, 0.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1650412800, 64.0, 262.0, '[\"核心\"]', 33);
+INSERT INTO `my_weight` VALUES (1650585600, 64.0, 177.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1650672000, 64.0, 216.0, '[\"手臂\",\"燃脂\"]', 52);
+INSERT INTO `my_weight` VALUES (1650758400, 64.0, 355.0, '[\"核心\",\"燃脂\"]', 40);
+INSERT INTO `my_weight` VALUES (1650931200, 64.0, 364.0, '[\"核心\",\"燃脂\"]', 39);
+INSERT INTO `my_weight` VALUES (1651276800, 64.0, 209.0, '[\"胸\",\"燃脂\"]', 65);
+INSERT INTO `my_weight` VALUES (1651363200, 64.0, 216.0, '[\"背\",\"核心\"]', 54);
+INSERT INTO `my_weight` VALUES (1651449600, 64.0, 0.0, '[\"手臂\"]', 38);
+INSERT INTO `my_weight` VALUES (1651536000, 64.0, 183.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1651622400, 64.0, 182.0, '[\"燃脂\"]', 15);
+INSERT INTO `my_weight` VALUES (1651708800, 63.0, 185.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1652400000, 63.0, 185.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1652486400, 62.0, 62.0, '[\"胸\"]', 39);
+INSERT INTO `my_weight` VALUES (1652659200, 63.0, 150.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1652918400, 63.0, 155.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1653004800, 63.0, 0.0, '[\"胸\"]', 17);
+INSERT INTO `my_weight` VALUES (1653091200, 63.0, 150.0, '[\"核心\",\"手臂\"]', 48);
+INSERT INTO `my_weight` VALUES (1653350400, 63.0, 150.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1653696000, 63.0, 150.0, '[\"胸\",\"核心\"]', 40);
+INSERT INTO `my_weight` VALUES (1653868800, 63.0, 200.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1654041600, 63.0, 171.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1654300800, 63.0, 162.0, '[\"核心\"]', 27);
+INSERT INTO `my_weight` VALUES (1654473600, 62.5, 141.0, '[\"核心\"]', 23);
+INSERT INTO `my_weight` VALUES (1654732800, 63.0, 170.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1654905600, 63.0, 0.0, '[\"手臂\"]', 30);
+INSERT INTO `my_weight` VALUES (1655078400, 63.0, 137.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1655251200, 63.0, 141.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1655510400, 63.0, 0.0, '[\"胸\"]', 36);
+INSERT INTO `my_weight` VALUES (1656460800, 63.0, 120.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1656547200, 63.0, 145.0, '[\"胸\"]', 25);
+INSERT INTO `my_weight` VALUES (1656720000, 63.0, 0.0, '[\"手臂\"]', 30);
+INSERT INTO `my_weight` VALUES (1656892800, 63.0, 200.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1656979200, 63.0, 0.0, '[\"胸\"]', 25);
+INSERT INTO `my_weight` VALUES (1657065600, 63.0, 143.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1657152000, 63.0, 151.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1657497600, 63.0, 160.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1657584000, 63.0, 250.0, '[\"胸\",\"燃脂\"]', 33);
+INSERT INTO `my_weight` VALUES (1658102400, 63.0, 160.0, '[\"核心\"]', 26);
+INSERT INTO `my_weight` VALUES (1658275200, 63.0, 162.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1658448000, 63.0, 152.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1658534400, 64.0, 185.0, '[\"手臂\"]', 30);
+INSERT INTO `my_weight` VALUES (1658707200, 64.0, 185.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1658793600, 64.0, 250.0, '[\"燃脂\"]', 15);
+INSERT INTO `my_weight` VALUES (1658966400, 64.0, 180.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1659312000, 65.0, 168.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1660089600, 65.0, 0.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1660348800, 65.0, 176.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1660521600, 65.0, 220.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1660694400, 65.0, 230.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1660867200, 65.0, 155.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1661731200, 65.5, 200.0, '[\"核心\",\"燃脂\"]', 25);
+INSERT INTO `my_weight` VALUES (1661817600, 65.5, 200.0, '[\"胸\",\"核心\"]', 200);
+INSERT INTO `my_weight` VALUES (1661904000, 65.0, 170.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1661990400, 65.0, 250.0, '[\"胸\",\"燃脂\"]', 25);
+INSERT INTO `my_weight` VALUES (1662249600, 65.5, 400.0, '[\"胸\",\"核心\",\"燃脂\"]', 50);
+INSERT INTO `my_weight` VALUES (1662422400, 65.5, 200.0, '[\"核心\",\"燃脂\"]', 25);
+INSERT INTO `my_weight` VALUES (1662508800, 65.5, 420.0, '[\"胸\",\"HIIT\",\"燃脂\"]', 35);
+INSERT INTO `my_weight` VALUES (1662681600, 65.0, 200.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1662768000, 65.0, 350.0, '[\"HIIT\"]', 20);
+INSERT INTO `my_weight` VALUES (1662854400, 65.0, 200.0, '[\"燃脂\"]', 15);
+INSERT INTO `my_weight` VALUES (1662940800, 65.0, 200.0, '[\"燃脂\"]', 15);
+INSERT INTO `my_weight` VALUES (1663027200, 65.0, 170.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1663286400, 64.0, 200.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1663372800, 63.0, 306.0, '[\"手臂\"]', 48);
+INSERT INTO `my_weight` VALUES (1663459200, 63.0, 518.0, '[\"燃脂\",\"胸\"]', 54);
+INSERT INTO `my_weight` VALUES (1663545600, 63.0, 200.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1663718400, 63.0, 133.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1663804800, 64.0, 201.0, '[\"核心\"]', 25);
+INSERT INTO `my_weight` VALUES (1663891200, 63.0, 310.0, '[\"HIIT\"]', 26);
+INSERT INTO `my_weight` VALUES (1664150400, 63.5, 200.0, '[\"核心\",\"燃脂\"]', 25);
+INSERT INTO `my_weight` VALUES (1664236800, 64.5, 150.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1664323200, 64.0, 180.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1664409600, 64.0, 270.0, '[\"HIIT\"]', 27);
+INSERT INTO `my_weight` VALUES (1664496000, 64.0, 200.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1664755200, 62.0, 180.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1664928000, 62.0, 180.0, '[\"核心\"]', 20);
+INSERT INTO `my_weight` VALUES (1665100800, 62.0, 300.0, '[\"手臂\"]', 40);
+INSERT INTO `my_weight` VALUES (1665187200, 63.0, 300.0, '[\"背\"]', 35);
+INSERT INTO `my_weight` VALUES (1665360000, 63.0, 300.0, '[\"胸\"]', 35);
+INSERT INTO `my_weight` VALUES (1665446400, 63.0, 185.0, '[\"核心\"]', 21);
+INSERT INTO `my_weight` VALUES (1665619200, 63.5, 220.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1665705600, 63.5, 150.0, '[\"胸\"]', 20);
+INSERT INTO `my_weight` VALUES (1665792000, 64.0, 500.0, '[\"胸\",\"核心\"]', 50);
+INSERT INTO `my_weight` VALUES (1665878400, 63.5, 200.0, '[\"手臂\"]', 35);
+INSERT INTO `my_weight` VALUES (1665964800, 64.0, 300.0, '[\"HIIT\"]', 25);
+INSERT INTO `my_weight` VALUES (1666051200, 63.0, 255.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1666137600, 63.0, 321.0, '[\"胸\",\"燃脂\"]', 35);
+INSERT INTO `my_weight` VALUES (1666224000, 63.0, 321.0, '[\"核心\",\"燃脂\"]', 35);
+INSERT INTO `my_weight` VALUES (1666396800, 63.0, 270.0, '[\"手臂\"]', 40);
+INSERT INTO `my_weight` VALUES (1666483200, 63.0, 200.0, '[\"胸\"]', 37);
+INSERT INTO `my_weight` VALUES (1666569600, 63.0, 230.0, '[\"核心\"]', 22);
+INSERT INTO `my_weight` VALUES (1666656000, 63.0, 180.0, '[\"胸\"]', 25);
+INSERT INTO `my_weight` VALUES (1666828800, 63.5, 300.0, '[\"核心\",\"燃脂\"]', 33);
+INSERT INTO `my_weight` VALUES (1666915200, 64.0, 380.0, '[\"背\",\"HIIT\"]', 50);
+INSERT INTO `my_weight` VALUES (1667001600, 63.0, 200.0, '[\"胸\"]', 35);
+INSERT INTO `my_weight` VALUES (1667088000, 61.0, 207.0, '[\"核心\"]', 22);
 
-USE health_admin_db;
-
-/**热量与体重**/
-CREATE TABLE my_weight(
-  -- fid INT PRIMARY KEY AUTO_INCREMENT,
-  date VARCHAR(32),
-  weight INT,
-  caloric INT,
-  training VARCHAR(64),
-  sporttime INT
-);
-
-/******数据导入******/
--- INSERT INTO
---   my_weight
--- VALUES
---   ("2022-7-1", 120, 220, null, 20);
+SET FOREIGN_KEY_CHECKS = 1;
