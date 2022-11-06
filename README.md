@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+## Vue3+Vite+Nodejs+Mysql health management platform
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+这是一个个人健身管理平台，Vue3+vite 开发，nodejs+mysql 本地服务加数据管理
 
-## Recommended IDE Setup
+assets 中 cover 与 mp3 资源移步此处下载：
+链接：https://pan.baidu.com/s/1Vpyv-C47P74yjoElxZq5OQ?pwd=sbar
+提取码：sbar
 
--   [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+欢迎 star
