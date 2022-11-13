@@ -85,30 +85,15 @@ $default-broder-radius: 30px;
             }
 
             .area_one {
-                width: var(--flex1);
                 margin-right: 10px;
             }
 
             .area_two {
-                width: var(--flex2);
                 margin: 0 10px;
             }
 
             .area_three {
-                width: var(--flex3);
                 margin-left: 10px;
-            }
-
-            .area_one.active {
-                width: var(--flex1);
-            }
-
-            .area_two.active {
-                width: var(--flex2);
-            }
-
-            .area_three.active {
-                width: var(--flex3);
             }
         }
 
@@ -289,7 +274,8 @@ $default-broder-radius: 30px;
             cursor: pointer;
             // 渐变色动画
             animation: color-change-3x 2s linear infinite alternate both;
-        }}
+        }
+    }
 }
 
 // 动画

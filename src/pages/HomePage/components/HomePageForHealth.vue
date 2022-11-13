@@ -11,16 +11,14 @@
     </div>
     <div class="health_part_two">
         <!-- 左侧图表 -->
-        <div
-            class="area_one"
-            :style="{ '--flex1': flex1 }"
-            ref="areaOne"
-            @click="toggleActive(1)"
-        >
+        <div class="area_one" ref="areaOne" @click="toggleActive(1)">
             <!-- 切换图标 -->
             <span
                 class="iconfont icon-zuo-copy"
-                :style="{ fontSize: '20px', cursor: 'pointer' }"
+                :style="{
+                    fontSize: '20px',
+                    cursor: 'pointer',
+                }"
                 v-if="flex1 == '5%'"
             ></span>
             <!-- 图表 -->
@@ -32,12 +30,7 @@
             </BasePieChart>
         </div>
         <!-- 中间图表 -->
-        <div
-            class="area_two active"
-            :style="{ '--flex2': flex2 }"
-            ref="areaTwo"
-            @click="toggleActive(2)"
-        >
+        <div class="area_two active" ref="areaTwo" @click="toggleActive(2)">
             <BaseBarChart
                 title="运动时长"
                 :series="data.seriesTwo"
@@ -48,12 +41,7 @@
             ></BaseBarChart>
         </div>
         <!-- 右侧图表 -->
-        <div
-            class="area_three"
-            :style="{ '--flex3': flex3 }"
-            ref="areaThree"
-            @click="toggleActive(3)"
-        >
+        <div class="area_three" ref="areaThree" @click="toggleActive(3)">
             <span
                 class="iconfont icon-zuo"
                 :style="{ fontSize: '20px', cursor: 'pointer' }"
@@ -154,4 +142,24 @@ function getData() {
 
 <style scoped lang="scss">
 @import "styles/homepage.scss";
+.area_one {
+    width: v-bind(flex1);
+    &.active {
+        width: v-bind(flex1);
+    }
+}
+
+.area_two {
+    width: v-bind(flex2);
+    &.active {
+        width: v-bind(flex2);
+    }
+}
+
+.area_three {
+    width: v-bind(flex3);
+    &.active {
+        width: v-bind(flex3);
+    }
+}
 </style>
