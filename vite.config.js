@@ -6,6 +6,8 @@ export default defineConfig({
     plugins: [vue()],
     server: {
         open: true,
+        host: "0.0.0.0",
+        port: "5147",
         hmr: true,
         usePolling: true,
     },

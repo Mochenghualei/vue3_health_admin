@@ -4,7 +4,7 @@ import nprogress from "nprogress"
 import "nprogress/nprogress.css"
 
 const requests = axios.create({
-    baseURL: "http://localhost:5173",
+    baseURL: "http://localhost:5147",
     timeout: 8000,
 })
 // 请求拦截器
