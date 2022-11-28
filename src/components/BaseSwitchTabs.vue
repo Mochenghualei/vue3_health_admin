@@ -22,14 +22,6 @@
 </template>
 
 <script setup>
-import {
-    ref,
-    reactive,
-    defineAsyncComponent,
-    shallowRef,
-    onMounted,
-    nextTick,
-} from "vue"
 const HealthyAdmin = defineAsyncComponent(() =>
     import("pages/homepage/components/HomePageForHealth.vue")
 )

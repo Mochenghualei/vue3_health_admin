@@ -64,8 +64,6 @@
 
 <script setup>
 import moment from "moment"
-import { ref, reactive } from "vue"
-
 let curTime = ref("00:00")
 let totalTime = ref("00:00")
 let playing = ref(false)

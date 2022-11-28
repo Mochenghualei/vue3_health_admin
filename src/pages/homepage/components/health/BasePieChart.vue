@@ -9,19 +9,7 @@
 </template>
 
 <script setup>
-import {
-    ref,
-    toRefs,
-    shallowRef,
-    onMounted,
-    onBeforeUnmount,
-    getCurrentInstance,
-    computed,
-    watch,
-    nextTick,
-} from "vue"
 import { pieChartOptions as optionsObj } from "./baseOptions"
-import { resize } from "utils/resizeChart"
 
 // 获取全局变量
 const { proxy } = getCurrentInstance()

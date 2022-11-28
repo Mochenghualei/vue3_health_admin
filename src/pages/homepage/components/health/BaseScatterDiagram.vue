@@ -59,7 +59,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
 import BaseScatterChartOne from "./BaseScatterChartOne.vue"
 import BaseScatterChartTwo from "./BaseScatterChartTwo.vue"
 

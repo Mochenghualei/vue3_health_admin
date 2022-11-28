@@ -3,17 +3,6 @@
 </template>
 
 <script setup>
-import {
-    ref,
-    toRefs,
-    shallowRef,
-    onMounted,
-    onBeforeUnmount,
-    getCurrentInstance,
-    computed,
-    watch,
-} from "vue"
-import { resize } from "utils/resizeChart"
 import { ScatterChartTwoOptions } from "./baseOptions"
 
 // 获取全局变量

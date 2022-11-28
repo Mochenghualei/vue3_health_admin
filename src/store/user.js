@@ -1,4 +1,3 @@
-import { defineStore } from "pinia"
 import { setToken, getToken, removeToken } from "@/utils/token"
 import { setUserInfo, getUserInfo, removeUserInfo } from "@/utils/userInfo"
 

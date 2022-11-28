@@ -23,19 +23,7 @@
 </template>
 
 <script setup>
-import {
-    ref,
-    toRefs,
-    shallowRef,
-    reactive,
-    onMounted,
-    getCurrentInstance,
-    computed,
-    watch,
-    nextTick,
-} from "vue"
 import { barChartOptions } from "./baseOptions"
-import { resize } from "utils/resizeChart"
 
 // 获取全局变量
 const { proxy } = getCurrentInstance()

@@ -10,10 +10,7 @@
         </div>
 
         <!-- 抽屉 -->
-        <MainDrawer
-            v-model:visible="visible"
-            v-if="!startStyleShow"
-        ></MainDrawer>
+        <HomePageDrawer v-model:visible="visible" v-if="!startStyleShow"></HomePageDrawer>
 
         <!-- 主体区域 -->
         <div class="home_main" v-if="!startStyleShow">
@@ -29,10 +26,10 @@
                 <div class="welcome">
                     Welcome
                     {{
-                        username
-                            ? username.charAt(0).toUpperCase() +
-                              username.slice(1)
-                            : ""
+                            username
+                                ? username.charAt(0).toUpperCase() +
+                                username.slice(1)
+                                : ""
                     }}
                 </div>
                 <div class="logout_btn">
@@ -51,12 +48,8 @@
 
             <!-- 指标 -->
             <div class="kpi_container">
-                <baseKpi
-                    :totalTime="data.totalTime"
-                    :totalDay="data.totalDay"
-                    :avgWeight="data.avgWeight"
-                    :avgBMI="data.avgBMI"
-                ></baseKpi>
+                <baseKpi :totalTime="data.totalTime" :totalDay="data.totalDay" :avgWeight="data.avgWeight"
+                    :avgBMI="data.avgBMI"></baseKpi>
             </div>
 
             <!-- 天气 -->
@@ -66,32 +59,13 @@
 
             <!-- 切换 -->
             <div class="tabs_container" v-once>
-                <BaseSwitchTabs
-                    @handleSwitchTab="handleSwitchTab"
-                ></BaseSwitchTabs>
+                <BaseSwitchTabs @handleSwitchTab="handleSwitchTab"></BaseSwitchTabs>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, defineAsyncComponent, shallowRef, inject } from "vue"
-import { useRouter } from "vue-router"
-
-import { useHomePageStore } from "store/homePage"
-import { useUserStore } from "store/user"
-import MainDrawer from "./components/HomePageDrawer.vue"
-import { getUserInfo } from "utils/userInfo"
-const BaseAudio = defineAsyncComponent(() => import("components/BaseAudio.vue"))
-const BaseClock = defineAsyncComponent(() => import("components/BaseClock.vue"))
-const BaseSwitchTabs = defineAsyncComponent(() =>
-    import("components/BaseSwitchTabs.vue")
-)
-const BaseWeather = defineAsyncComponent(() =>
-    import("components/BaseWeather.vue")
-)
-const baseKpi = defineAsyncComponent(() => import("components/BaseKpi.vue"))
-
 const visible = ref(false)
 // 蒙版按钮
 const startStyleShow = ref(true)

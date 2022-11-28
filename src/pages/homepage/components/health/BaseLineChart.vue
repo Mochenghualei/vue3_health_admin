@@ -9,17 +9,6 @@
 </template>
 
 <script setup>
-import {
-    ref,
-    toRefs,
-    shallowRef,
-    reactive,
-    onMounted,
-    getCurrentInstance,
-    computed,
-    watch,
-} from "vue"
-import { resize } from "utils/resizeChart"
 import { lineChartOptions } from "./baseOptions"
 
 // 获取全局变量

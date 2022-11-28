@@ -174,8 +174,6 @@
 </template>
 <script setup>
 import { SearchOutlined } from "@ant-design/icons-vue"
-import { useTable } from "hooks/useTable"
-
 const {
     totalCount,
     currentPageNum,

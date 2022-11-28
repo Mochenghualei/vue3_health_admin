@@ -11,17 +11,6 @@
 </template>
 
 <script setup>
-import {
-    ref,
-    toRefs,
-    shallowRef,
-    onMounted,
-    onBeforeUnmount,
-    getCurrentInstance,
-    computed,
-    watch,
-} from "vue"
-import { resize } from "utils/resizeChart"
 
 // 获取全局变量
 const { proxy } = getCurrentInstance()

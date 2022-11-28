@@ -64,13 +64,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, inject } from "vue"
 import BaseLineChart from "./health/BaseLineChart.vue"
 import BaseBarChart from "./health/BaseBarChart.vue"
 import BasePieChart from "./health/BasePieChart.vue"
 import BaseScatterDiagram from "./health/BaseScatterDiagram.vue"
 import BaseGaugeChart from "./health/BaseGaugeChart.vue"
-import { useHomePageStore } from "store/homePage"
 
 const message = inject("message")
 const homePageStore = useHomePageStore()

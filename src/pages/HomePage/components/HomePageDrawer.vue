@@ -119,8 +119,6 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent } from "vue"
-import { useForm } from "hooks/useForm"
 const Table = defineAsyncComponent(() => import("./health/BaseTable.vue"))
 
 const props = defineProps(["visible"])
