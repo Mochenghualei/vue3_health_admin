@@ -44,8 +44,10 @@ onMounted(() => {
 })
 
 const handleClick = (index, comp) => {
+    // activeIndex.value = index
+    // emit("handleSwitchTab", comp)
+    // 写死
     activeIndex.value = index
-    emit("handleSwitchTab", comp)
 }
 </script>
 

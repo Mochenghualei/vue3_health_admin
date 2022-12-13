@@ -4,5 +4,3 @@
 
 assets 中资源移步此处下载：
 链接: https://pan.baidu.com/s/11-H33XV-YraR6yQpASHzEA?pwd=ghmp 提取码: ghmp
-
-欢迎 star
