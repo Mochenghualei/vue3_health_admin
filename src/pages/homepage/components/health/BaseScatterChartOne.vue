@@ -11,6 +11,9 @@ const ScatterChartOne = ref()
 const myChart = shallowRef(null)
 const timer = ref(null)
 
+// 获取当前年份
+const { data } = useHomePageStore()
+
 const props = defineProps({
     series: {
         type: Array,
@@ -55,7 +58,7 @@ const options = computed(() => {
         "11月",
         "12月",
     ]
-    const day = "2022"
+    const day = data.year
     const options = {
         ...ScatterChartOneOptions,
         title: {

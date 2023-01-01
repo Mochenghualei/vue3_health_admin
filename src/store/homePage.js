@@ -12,6 +12,8 @@ export const useHomePageStore = defineStore("homePage", {
     state: () => {
         return {
             data: {
+                // 选择框年份
+                year: "2023",
                 seriesOne: [],
                 xAxisDataOne: [],
                 seriesTwo: [],
@@ -33,41 +35,54 @@ export const useHomePageStore = defineStore("homePage", {
         async getGlobalData() {
             const res = await getUserList()
             if (res && res.length) {
+                // 按年份保存数据
+                const latestDate = res.filter((item) => {
+                    const date = getdateFormated(item.date).split("/")[0]
+                    return date === this.data.year
+                })
+
                 // 获取总条数
                 this.data.totalCount = res.length
                 // 指标
                 let totalTime = 0,
                     totalWeight = 0
-                res.forEach((item) => {
+                latestDate.forEach((item) => {
                     totalTime += item.sporttime
                     totalWeight += item.weight
                 })
                 this.data.totalTime = totalTime
-                this.data.totalDay = res.length
-                this.data.avgWeight = (totalWeight / res.length).toFixed(1) * 1
+                this.data.totalDay = latestDate.length
+                this.data.avgWeight =
+                    (totalWeight / latestDate.length).toFixed(1) * 1
                 this.data.avgBMI = (
                     this.data.avgWeight / Math.pow(1.69, 2)
                 ).toFixed(1)
                 // 图表1数据处理
                 const { seriesData, xAxisData } = getChartOneData(
-                    res,
+                    latestDate,
                     getdateFormated
                 )
                 this.data.seriesOne = seriesData
                 this.data.xAxisDataOne = xAxisData
                 // 图表2数据处理
                 const { drilldownData, seriesDataTwo } = getChartTwoData(
-                    res,
+                    latestDate,
                     getdateFormated
                 )
                 this.data.drilldownData = drilldownData
                 this.data.seriesTwo = seriesDataTwo
                 // 图表3数据处理
-                this.data.seriesThree = getChartThreeData(res)
+                this.data.seriesThree = getChartThreeData(latestDate)
                 // 图表4数据处理
-                this.data.seriesFour = getChartFourData(res, getdateFormated)
+                this.data.seriesFour = getChartFourData(
+                    latestDate,
+                    getdateFormated
+                )
                 // 图表5数据处理
-                this.data.seriesFive = getChartFiveData(res, getdateFormated)
+                this.data.seriesFive = getChartFiveData(
+                    latestDate,
+                    getdateFormated
+                )
 
                 return Promise.resolve("获取数据成功")
             } else {

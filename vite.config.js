@@ -35,6 +35,7 @@ export default defineConfig({
         host: "0.0.0.0",
         port: "5147",
         hmr: true,
+        hotUpdate: true,
         usePolling: true,
     },
     // alias
