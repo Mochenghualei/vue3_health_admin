@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     BaseSwitchTabs: typeof import('./../components/BaseSwitchTabs.vue')['default']
     BaseTable: typeof import('./../pages/HomePage/components/health/BaseTable.vue')['default']
     BaseWeather: typeof import('./../components/BaseWeather.vue')['default']
+    BaseYearSelect: typeof import('./../components/BaseYearSelect.vue')['default']
     HomePage: typeof import('./../pages/HomePage/HomePage.vue')['default']
     HomePageDrawer: typeof import('./../pages/HomePage/components/HomePageDrawer.vue')['default']
     HomePageForHealth: typeof import('./../pages/HomePage/components/HomePageForHealth.vue')['default']

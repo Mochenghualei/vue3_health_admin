@@ -39,16 +39,13 @@
                     <button class="btn" @click="logout">退出登录</button>
                 </div>
             </div>
+            <!-- 年份筛选 -->
             <div class="year_selector">
-                <a-select
-                    v-model:value="data.year"
-                    show-search
-                    placeholder="Select a person"
-                    style="width: 200px"
-                    :options="options"
-                    @change="handleChange"
-                >
-                </a-select>
+                <BaseYearSelect
+                    v-model:year="data.year"
+                    width="200"
+                    @handleChange="handleChange"
+                ></BaseYearSelect>
             </div>
             <!-- 播放器 -->
             <div class="audio_container" v-once>
@@ -86,39 +83,9 @@
 </template>
 
 <script setup>
-// 封装选择器组件
-const options = ref([
-    {
-        value: "2022",
-        label: "2022",
-    },
-    {
-        value: "2023",
-        label: "2023",
-    },
-])
-
-const handleChange = (value) => {
-    // 更新year并重新请求
-    data.year = value
-    // 重新请求
-    homePageStore.getGlobalData()
-}
-
-onMounted(() => {
-    // // 从表格数据获取最新年份
-    // setTimeout(() => {
-    //     const date = []
-    //     tableData.value.forEach((item) => {
-    //         date.push(Number(item.date.split("-")[0]))
-    //     })
-    //     year.value = Math.max(...date)
-    // }, 100)
-})
-
 const visible = ref(false)
 // 蒙版按钮
-const startStyleShow = ref(false)
+const startStyleShow = ref(true)
 let currentTab = shallowRef(null)
 // 获取store
 const homePageStore = useHomePageStore()
@@ -130,6 +97,13 @@ const message = inject("message")
 
 function handleSwitchTab(tab) {
     currentTab.value = tab
+}
+
+function handleChange(value) {
+    // 更新year并重新请求
+    data.year = value
+    // 重新请求
+    homePageStore.getGlobalData()
 }
 
 function logout() {
